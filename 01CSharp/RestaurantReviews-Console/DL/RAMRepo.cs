@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Models;
 
 namespace DL
 {
@@ -15,11 +16,11 @@ namespace DL
             {
                 new Restaurant()
                 {
-                    Name: "Salt and Straw",
-                    City: "Portland",
-                    State: "OR"
+                    Name = "Salt and Straw",
+                    City = "Portland",
+                    State = "OR"
                 }
-            }
+            };
         }
 
         public static RAMRepo GetInstance()

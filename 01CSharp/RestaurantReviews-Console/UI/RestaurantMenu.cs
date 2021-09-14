@@ -1,10 +1,19 @@
 using System;
 using Models;
+using RRBL;
+using System.Collections.Generic;
 
 namespace UI
 {
     public class RestaurantMenu : IMenu
     {
+        private IBL _bl;
+
+        public RestaurantMenu(IBL bl)
+        {
+            _bl = bl;
+        }
+
         public void Start() {
             bool exit = false;
             do
@@ -18,11 +27,10 @@ namespace UI
                 switch (Console.ReadLine())
                 {
                     case "0":
-                        Console.WriteLine("You'll be creating restaurant");
                         CreateRestaurant();
                         break;
                     case "1":
-                        Console.WriteLine("you'll be viewing all restos");
+                        ViewAllRestaurants();
                         break;
                     case "x":
                         exit = true;
@@ -45,8 +53,18 @@ namespace UI
             string state = Console.ReadLine();
 
             Restaurant newResto = new Restaurant(name, city, state);
-
+            _bl.AddRestaurant(newResto);
             Console.WriteLine($"You created {newResto.ToString()}");
+        }
+
+        private void ViewAllRestaurants()
+        {
+            List<Restaurant> allResto = _bl.GetAllRestaurants();
+
+            foreach (Restaurant resto in allResto)
+            {
+                Console.WriteLine(resto.ToString());
+            }
         }
     }
 }

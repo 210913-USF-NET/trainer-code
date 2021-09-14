@@ -1,11 +1,13 @@
 using Models;
 using System.Collections.Generic;
+using DL;
 
-namespace DL
+namespace RRBL
 {
-    public interface IRepo
+    public interface IBL
     {
-        Restaurant AddRestaurant(Restaurant resto);
         List<Restaurant> GetAllRestaurants();
+
+        Restaurant AddRestaurant(Restaurant resto);
     }
 }

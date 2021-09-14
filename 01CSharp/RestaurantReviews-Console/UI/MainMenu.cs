@@ -1,6 +1,7 @@
 using System;
 using Models;
-
+using RRBL;
+using DL;
 namespace UI
 {
     public class MainMenu : IMenu
@@ -21,7 +22,7 @@ namespace UI
                 switch (input)
                 {
                     case "0":
-                        new RestaurantMenu().Start();
+                        new RestaurantMenu(new BL(RAMRepo.GetInstance())).Start();
                         break;
 
                     case "1":
