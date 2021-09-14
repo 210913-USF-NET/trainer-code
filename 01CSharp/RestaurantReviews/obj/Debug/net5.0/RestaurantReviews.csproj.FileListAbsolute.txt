@@ -1,0 +1,16 @@
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\RestaurantReviews.exe
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\RestaurantReviews.deps.json
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\RestaurantReviews.runtimeconfig.json
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\RestaurantReviews.runtimeconfig.dev.json
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\RestaurantReviews.dll
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\ref\RestaurantReviews.dll
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\bin\Debug\net5.0\RestaurantReviews.pdb
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.csproj.AssemblyReference.cache
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.AssemblyInfoInputs.cache
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.AssemblyInfo.cs
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.csproj.CoreCompileInputs.cache
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.dll
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\ref\RestaurantReviews.dll
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.pdb
+C:\Users\MinseonSong\Revature\210913-usf-net\trainer-code\01CSharp\RestaurantReviews\obj\Debug\net5.0\RestaurantReviews.genruntimeconfig.cache
