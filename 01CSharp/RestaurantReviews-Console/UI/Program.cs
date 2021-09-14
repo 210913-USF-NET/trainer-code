@@ -12,7 +12,7 @@ namespace UI
             do
             {
                 Console.WriteLine("Welcome to Restaurant Reviews!");
-                Console.WriteLine("[0] Manage Restaurants");
+                Console.WriteLine("[0] Create Restaurant");
                 Console.WriteLine("[1] Leave Reviews");
                 Console.WriteLine("[x] Exit");
 
@@ -21,7 +21,7 @@ namespace UI
                 switch (input)
                 {
                     case "0":
-                        Console.WriteLine("You wanted to manage restos");
+                        CreateRestaurant();
                         break;
 
                     case "1":
@@ -38,6 +38,21 @@ namespace UI
                         break;
                 }
             } while (!exit);
+        }
+
+        private void CreateRestaurant()
+        {
+            Console.WriteLine("Creating new restaurant");
+            Console.WriteLine("Name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("City: ");
+            string city = Console.ReadLine();
+            Console.WriteLine("State: ");
+            string state = Console.ReadLine();
+
+            Restaurant newResto = new Restaurant(name, city, state);
+
+            Console.WriteLine($"You created {newResto.ToString()}");
         }
     }
 }
