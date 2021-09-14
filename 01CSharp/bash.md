@@ -18,6 +18,7 @@ Bourne-again shell
 ## dotnet cli commands
 - dotnet new console : creates new console app
 - dotnet new classlib: creates new class library
+- dotnet new gitignore: generates dotnet specific gitignore for you
 - dotnet new sln : creates new file
     - -n to name your stuff from the get go
 - dotnet run : to run your project (make sure you're in the project folder you want to run)
