@@ -9,6 +9,7 @@ namespace RRBL
     {
         private IRepo _repo;
         
+        //IRepo repo is the dependency of Business logic, that is being passed in aka "injected"
         public BL(IRepo repo)
         {
             _repo = repo;

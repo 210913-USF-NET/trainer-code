@@ -22,6 +22,9 @@ namespace UI
                 switch (input)
                 {
                     case "0":
+                        //this is an example of dependency injection
+                        //I'm "injecting" an instance of business logic layer to restaurant menu, and an implementation of 
+                        //IRepo to business logic
                         new RestaurantMenu(new BL(RAMRepo.GetInstance())).Start();
                         break;
 
