@@ -60,10 +60,16 @@ namespace UI
         private void ViewAllRestaurants()
         {
             List<Restaurant> allResto = _bl.GetAllRestaurants();
-
-            foreach (Restaurant resto in allResto)
+            if(allResto.Count == 0)
             {
-                Console.WriteLine(resto.ToString());
+                Console.WriteLine("There is no restaurants :/");
+            }
+            else
+            {
+                foreach (Restaurant resto in allResto)
+                {
+                    Console.WriteLine(resto.ToString());
+                }
             }
         }
     }
