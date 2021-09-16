@@ -36,7 +36,7 @@ namespace UI
                         break;
 
                     case "1":
-                        Console.WriteLine("you wanted to leave reviews");
+                        new ReviewMenu().Start();
                         break;
 
                     case "x":

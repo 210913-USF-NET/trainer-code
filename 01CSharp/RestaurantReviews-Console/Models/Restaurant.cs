@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Restaurant
     {
         //default empty constructor
-        public Restaurant() {}
+        public Restaurant() {
+            this.Reviews = new List<Review>();
+        }
 
         //constructor overloading
         public Restaurant(string name)
@@ -27,6 +30,8 @@ namespace Models
         public string City { get; set; }
 
         public string State { get; set; }
+
+        public List<Review> Reviews { get; set; }
 
         // //this is field
         // private string _name;

@@ -22,6 +22,7 @@ namespace UI
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("[0] Create Restaurant");
                 Console.WriteLine("[1] View all Restaurants");
+                Console.WriteLine("[2] View a Restaurant");
                 Console.WriteLine("[x] Go Back To Main Menu");
 
                 switch (Console.ReadLine())
@@ -32,6 +33,9 @@ namespace UI
                     case "1":
                         ViewAllRestaurants();
                         break;
+                    case "2":
+                        ViewOneRestaurant();
+                        break;
                     case "x":
                         exit = true;
                         break;
@@ -40,6 +44,11 @@ namespace UI
                         break;
                 }
             } while (!exit);
+        }
+
+        private void ViewOneRestaurant()
+        {
+            throw new NotImplementedException();
         }
 
         private void CreateRestaurant()
