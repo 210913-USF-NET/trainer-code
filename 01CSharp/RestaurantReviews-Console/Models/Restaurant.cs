@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Serilog;
 
 namespace Models
 {
@@ -8,6 +9,7 @@ namespace Models
     {
         //default empty constructor
         public Restaurant() {
+            Log.Debug("Creating restaurant");
             this.Reviews = new List<Review>();
         }
 
@@ -41,7 +43,9 @@ namespace Models
 
                 if(value.Length == 0)
                 {
-                    throw new InputInvalidException("Restaurant name can't be empty");
+                    InputInvalidException e = new InputInvalidException("Restaurant name can't be empty");
+                    Log.Warning(e.Message);
+                    throw e;
                 }
                 else if(!pattern.IsMatch(value))
                 {

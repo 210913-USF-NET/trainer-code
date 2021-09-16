@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.Json;
 using System;
 using System.Linq;
+using Serilog;
 
 namespace DL
 {
@@ -23,6 +24,7 @@ namespace DL
         /// <returns>the added restaurant</returns>
         public Restaurant AddRestaurant(Restaurant resto)
         {
+            Log.Debug("DL is adding a restaurant, {0}", resto.ToString());
             //first, grab all restaurant from the file as List<Restaurant>
             List<Restaurant> allResto = GetAllRestaurants();
             //right now, this is in type of List<Restaurant>
