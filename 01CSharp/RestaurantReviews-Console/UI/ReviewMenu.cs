@@ -101,7 +101,6 @@ namespace UI
                 //I added the new review to the selected restaurant
                 selectedRestaurant.Reviews.Add(reviewToAdd);
 
-                //Implement this
                 Restaurant updatedRestaurant = _bl.UpdateRestaurant(selectedRestaurant);
 
                 Console.WriteLine("Review Added successfully");
