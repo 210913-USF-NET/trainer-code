@@ -11,7 +11,7 @@ namespace Models
         }
 
         //constructor overloading
-        public Restaurant(string name)
+        public Restaurant(string name) : this()
         {
             this.Name = name;
         }

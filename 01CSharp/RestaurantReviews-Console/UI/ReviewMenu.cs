@@ -1,9 +1,16 @@
 using System;
+using RRBL;
 
 namespace UI
 {
     public class ReviewMenu : IMenu
     {
+        private IBL _bl;
+
+        public ReviewMenu(IBL bl)
+        {
+            _bl = bl;
+        }
         public void Start()
         {
             bool exit = false;
@@ -31,7 +38,8 @@ namespace UI
 
         private void WriteAReview()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Select a restaurant to write a review for");
+            //I need a list of all restaurant to select from
         }
     }
 }
