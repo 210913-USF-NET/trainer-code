@@ -12,5 +12,7 @@ namespace RRBL
         List<Restaurant> GetAllRestaurants();
 
         Restaurant AddRestaurant(Restaurant resto);
+
+        Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
     }
 }

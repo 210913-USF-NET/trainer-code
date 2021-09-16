@@ -7,5 +7,7 @@ namespace DL
     {
         Restaurant AddRestaurant(Restaurant resto);
         List<Restaurant> GetAllRestaurants();
+
+        Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
     }
 }

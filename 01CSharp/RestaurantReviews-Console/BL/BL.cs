@@ -24,5 +24,11 @@ namespace RRBL
         {
             return _repo.AddRestaurant(resto);
         }
+
+        public Restaurant UpdateRestaurant(Restaurant restoToUpdate)
+        {
+            //add logic to update restaurant
+            return _repo.UpdateRestaurant(restoToUpdate);
+        }
     }
 }

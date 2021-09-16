@@ -25,5 +25,10 @@ namespace Models
             }
         }
         public string Note { get; set; }
+
+        public override string ToString()
+        {
+            return $"Rating: {this.Rating}\nNote: {this.Note}";
+        }
     }
 }

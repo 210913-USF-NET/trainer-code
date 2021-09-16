@@ -62,5 +62,10 @@ namespace DL
         {
             return _restaurants;
         }
+
+        public Restaurant UpdateRestaurant(Restaurant restaurantToUpdate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

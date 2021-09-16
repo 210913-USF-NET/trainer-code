@@ -78,5 +78,10 @@ namespace Models
         {
             return $"Name: {this.Name}, City: {this.City}, State: {this.State}";
         }
+
+        public bool Equals(Restaurant restaurant)
+        {
+            return this.Name == restaurant.Name && this.City == restaurant.City && this.State == restaurant.State;
+        }
     }
 }

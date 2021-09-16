@@ -88,17 +88,27 @@ namespace UI
                     //user entered integer out of bound
                     Console.WriteLine(e.Message);
                 }
-                catch (Exception e)
-                {
-                    //catches all the other exception here
-                    //maybe do something crazy
-                    Console.WriteLine(e);
-                }
                 finally
                 {
-                    //where do I use this block?
+                    //when do I use this block?
                     //to clean up a resource or finish my thought
                     //for example, Log.CloseAndFlush(); to close the logger 
+                }
+                //I'm done adding my rating
+                Console.WriteLine("Notes: ");
+                reviewToAdd.Note = Console.ReadLine();
+
+                //I added the new review to the selected restaurant
+                selectedRestaurant.Reviews.Add(reviewToAdd);
+
+                //Implement this
+                Restaurant updatedRestaurant = _bl.UpdateRestaurant(selectedRestaurant);
+
+                Console.WriteLine("Review Added successfully");
+                Console.WriteLine(updatedRestaurant);
+                foreach(Review review in updatedRestaurant.Reviews)
+                {
+                    Console.WriteLine(review);
                 }
             }
             else
