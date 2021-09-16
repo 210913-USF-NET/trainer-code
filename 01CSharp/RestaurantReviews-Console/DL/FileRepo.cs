@@ -64,9 +64,9 @@ namespace DL
         {
             //first, find the restaurant to update
             //by first, getting all restaurants, using getAllRestaurants method
-            //and then I used LINQ's first or default method
-            //to get the restaurant that returns true for my lambda expression (aka arrow function in js)
-            //which means, that I'm looking for the restaurant object that matches the one I'm trying to update
+            //and then use FindIndex method with the lambda expression
+            //to get me the location of the restaurant in the list
+            //if there is a match
             List<Restaurant> allRestaurants = GetAllRestaurants();
             int restaurantIndex = allRestaurants.FindIndex(r => r.Equals(restaurantToUpdate));
 
