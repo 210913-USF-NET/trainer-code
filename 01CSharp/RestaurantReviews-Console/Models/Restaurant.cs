@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Models
 {
@@ -24,8 +25,34 @@ namespace Models
         }
 
         //this is type member
+        private string _name;
+
         //this is an example of property
-        public string Name { get; set; }
+        public string Name 
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                //this pattern means that the string only contains alphanumeric characters, exclamation point, and question mark.
+                Regex pattern = new Regex("^[a-zA-Z0-9 !?]+$");
+
+                if(value.Length == 0)
+                {
+                    throw new InputInvalidException("Restaurant name can't be empty");
+                }
+                else if(!pattern.IsMatch(value))
+                {
+                    throw new InputInvalidException("Restaurant name can only have alphanumeric characters, !, and ?.");
+                }
+                else
+                {
+                    _name = value;
+                }
+            }
+        }
 
         public string City { get; set; }
 

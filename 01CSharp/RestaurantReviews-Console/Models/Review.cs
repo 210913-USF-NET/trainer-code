@@ -16,7 +16,7 @@ namespace Models
             {
                 if(value > 5 || value < 1)
                 {
-                    throw new Exception("you're wrong");
+                    throw new InputInvalidException("Rating must be between 1 and 5");
                 }
                 else
                 {

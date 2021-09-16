@@ -54,16 +54,27 @@ namespace UI
         private void CreateRestaurant()
         {
             Console.WriteLine("Creating new restaurant");
+            Restaurant newResto = new Restaurant();
+            inputName:
             Console.WriteLine("Name: ");
             string name = Console.ReadLine();
-            Console.WriteLine("City: ");
-            string city = Console.ReadLine();
-            Console.WriteLine("State: ");
-            string state = Console.ReadLine();
 
-            Restaurant newResto = new Restaurant(name, city, state);
+            try
+            {
+                newResto.Name = name;
+            }
+            catch(InputInvalidException e)
+            {
+                Console.WriteLine(e.Message);
+                goto inputName;
+            }
+            Console.WriteLine("City: ");
+            newResto.City = Console.ReadLine();
+            Console.WriteLine("State: ");
+            newResto.State = Console.ReadLine();
+
             _bl.AddRestaurant(newResto);
-            Console.WriteLine($"You created {newResto.ToString()}");
+            Console.WriteLine($"You created {newResto}");
         }
 
         private void ViewAllRestaurants()

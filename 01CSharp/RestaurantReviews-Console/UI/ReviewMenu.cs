@@ -83,10 +83,22 @@ namespace UI
                     //else, assign the number to rating
                     reviewToAdd.Rating = userRating;
                 }
+                catch (InputInvalidException e)
+                {
+                    //user entered integer out of bound
+                    Console.WriteLine(e.Message);
+                }
                 catch (Exception e)
                 {
-                    //do something with this exception
-                    Console.WriteLine(e.Message);
+                    //catches all the other exception here
+                    //maybe do something crazy
+                    Console.WriteLine(e);
+                }
+                finally
+                {
+                    //where do I use this block?
+                    //to clean up a resource or finish my thought
+                    //for example, Log.CloseAndFlush(); to close the logger 
                 }
             }
             else
