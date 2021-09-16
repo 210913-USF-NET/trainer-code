@@ -44,6 +44,11 @@ namespace UI
             reviewStart:
             Console.WriteLine("Select a restaurant to write a review for");
             List<Restaurant> allRestaurants = _bl.GetAllRestaurants();
+            if(allRestaurants == null || allRestaurants.Count == 0)
+            {
+                Console.WriteLine("No Restaurants :/");
+                return;
+            }
             for(int i = 0; i < allRestaurants.Count; i++)
             {
                 Console.WriteLine($"[{i}] {allRestaurants[i]}");
@@ -54,9 +59,35 @@ namespace UI
             //pass by reference in, out, ref
             bool parseSuccess = Int32.TryParse(input, out parsedInput);
 
-            if(parseSuccess)
+            //I'm checking to see that parse has been successful
+            //and the result stays within the boundary of the index
+            if(parseSuccess && parsedInput >= 0 && parsedInput < allRestaurants.Count)
             {
                 Restaurant selectedRestaurant = allRestaurants[parsedInput];
+                Console.WriteLine($"You picked {selectedRestaurant.Name}");
+
+                Review reviewToAdd = new Review();
+                rating:
+                Console.WriteLine("Rating (1-5): ");
+                int userRating;
+                bool success = int.TryParse(Console.ReadLine(), out userRating);
+                //if the parse has not been successful, as in the input was not a number
+                if(!success) 
+                {
+                    //let the user know, and kick them back to try again
+                    Console.WriteLine("Invalid input");
+                    goto rating;
+                }
+                try
+                {
+                    //else, assign the number to rating
+                    reviewToAdd.Rating = userRating;
+                }
+                catch (Exception e)
+                {
+                    //do something with this exception
+                    Console.WriteLine(e.Message);
+                }
             }
             else
             {
