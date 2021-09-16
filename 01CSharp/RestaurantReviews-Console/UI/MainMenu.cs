@@ -25,7 +25,14 @@ namespace UI
                         //this is an example of dependency injection
                         //I'm "injecting" an instance of business logic layer to restaurant menu, and an implementation of 
                         //IRepo to business logic
-                        new RestaurantMenu(new BL(new FileRepo())).Start();
+                        IRepo dataLayer = new FileRepo();
+                        IBL businessLogic = new BL(dataLayer);
+                        IMenu restaurantMenu = new RestaurantMenu(businessLogic);
+
+                        restaurantMenu.Start();
+
+                        //4 lines ^ is this line
+                        // new RestaurantMenu(new BL(new FileRepo())).Start();
                         break;
 
                     case "1":

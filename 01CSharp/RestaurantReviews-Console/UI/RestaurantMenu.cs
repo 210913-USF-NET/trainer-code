@@ -62,7 +62,7 @@ namespace UI
             List<Restaurant> allResto = _bl.GetAllRestaurants();
             if(allResto.Count == 0)
             {
-                Console.WriteLine("There is no restaurants :/");
+                Console.WriteLine("There is no restaurant :/");
             }
             else
             {
