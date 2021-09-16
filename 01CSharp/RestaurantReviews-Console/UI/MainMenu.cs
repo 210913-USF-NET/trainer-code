@@ -36,7 +36,7 @@ namespace UI
                         break;
 
                     case "1":
-                        new ReviewMenu().Start();
+                        new ReviewMenu(new BL(new FileRepo())).Start();
                         break;
 
                     case "x":

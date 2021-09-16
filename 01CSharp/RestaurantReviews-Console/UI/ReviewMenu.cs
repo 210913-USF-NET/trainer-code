@@ -1,5 +1,7 @@
 using System;
 using RRBL;
+using System.Collections.Generic;
+using Models;
 
 namespace UI
 {
@@ -38,8 +40,30 @@ namespace UI
 
         private void WriteAReview()
         {
+            //this is a region
+            reviewStart:
             Console.WriteLine("Select a restaurant to write a review for");
-            //I need a list of all restaurant to select from
+            List<Restaurant> allRestaurants = _bl.GetAllRestaurants();
+            for(int i = 0; i < allRestaurants.Count; i++)
+            {
+                Console.WriteLine($"[{i}] {allRestaurants[i]}");
+            }
+            string input = Console.ReadLine();
+            int parsedInput;
+
+            //pass by reference in, out, ref
+            bool parseSuccess = Int32.TryParse(input, out parsedInput);
+
+            if(parseSuccess)
+            {
+                Restaurant selectedRestaurant = allRestaurants[parsedInput];
+            }
+            else
+            {
+                Console.WriteLine("invalid input");
+                //this is how we go to a region
+                goto reviewStart;
+            }
         }
     }
 }
