@@ -87,6 +87,7 @@ namespace UI
                 {
                     //user entered integer out of bound
                     Console.WriteLine(e.Message);
+                    goto rating;
                 }
                 finally
                 {
