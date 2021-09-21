@@ -3,6 +3,8 @@ namespace Models
 {
     public class Review
     {
+        public int Id { get; set; }
+        
         //private field
         private int _rating;
         //property

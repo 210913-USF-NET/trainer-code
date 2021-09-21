@@ -26,6 +26,8 @@ namespace Models
             this.State = state;
         }
 
+        public int Id { get; set; }
+
         //this is type member
         private string _name;
 
