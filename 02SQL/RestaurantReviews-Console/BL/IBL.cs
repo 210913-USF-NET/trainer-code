@@ -18,5 +18,7 @@ namespace RRBL
         List<Restaurant> SearchRestaurant(string quertStr);
 
         Review AddAReview(Review review);
+
+        Restaurant GetOneRestaurantById(int id);
     }
 }

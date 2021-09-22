@@ -61,9 +61,10 @@ namespace UI
                 Console.WriteLine("No Restaurants :/");
                 return;
             }
-            Restaurant selectedRestaurant = _restoService.SelectARestaurant("Pick a restaurant to write review for", searchResult);
+            Restaurant selectedRestaurant = _restoService.SelectARestaurant("Pick a restaurant", searchResult);
 
             Console.WriteLine(selectedRestaurant);
+            selectedRestaurant = _bl.GetOneRestaurantById(selectedRestaurant.Id);
             foreach(Review review in selectedRestaurant.Reviews)
             {
                 Console.WriteLine(review);

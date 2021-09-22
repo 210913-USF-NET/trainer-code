@@ -40,5 +40,10 @@ namespace RRBL
         {
             return _repo.AddAReview(review);
         }
+
+        public Restaurant GetOneRestaurantById(int id)
+        {
+            return _repo.GetOneRestaurantById(id);
+        }
     }
 }

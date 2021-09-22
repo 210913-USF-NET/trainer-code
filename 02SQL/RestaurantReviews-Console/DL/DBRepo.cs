@@ -55,6 +55,14 @@ namespace DL
                     City = restaurant.City
                 }
             ).ToList();
+
+            //same result, in query syntax
+            // return (from resto in _context.Restaurants select new Model.Restaurant(){
+            //     Id = resto.Id,
+            //     Name = resto.Name,
+            //     State = resto.State,
+            //     City = resto.City
+            // }).ToList();
         }
 
         public Model.Restaurant UpdateRestaurant(Model.Restaurant restaurantToUpdate)
@@ -118,11 +126,13 @@ namespace DL
         {
             Entity.Restaurant restoById = 
                 _context.Restaurants
-                .Include("Review")
+                //this include method joins reviews table with the restaurant table
+                //and grabs all reviews that references the selected restaurant
+                //by restaurantId
+                // .Include("Reviews")
+                .Include(r => r.Reviews)
                 .FirstOrDefault(r => r.Id == id);
 
-            // List<Entity.Review> reviews =
-            //     _context.Reviews.Where(review => review.RestaurantId == restoById.Id).ToList();
             return new Model.Restaurant() {
                 Id = restoById.Id,
                 Name = restoById.Name,
