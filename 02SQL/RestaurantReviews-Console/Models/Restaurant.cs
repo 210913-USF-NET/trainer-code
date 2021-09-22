@@ -9,7 +9,7 @@ namespace Models
     {
         //default empty constructor
         public Restaurant() {
-            Log.Debug("Creating restaurant");
+            Log.Debug("Model Restaurant Constructor");
             this.Reviews = new List<Review>();
         }
 
@@ -26,6 +26,8 @@ namespace Models
             this.State = state;
         }
 
+        public int Id { get; set; }
+
         //this is type member
         private string _name;
 
@@ -39,7 +41,7 @@ namespace Models
             set
             {
                 //this pattern means that the string only contains alphanumeric characters, exclamation point, and question mark.
-                Regex pattern = new Regex("^[a-zA-Z0-9 !?]+$");
+                Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
 
                 if(value.Length == 0)
                 {
@@ -80,7 +82,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Name: {this.Name}, City: {this.City}, State: {this.State}";
+            return $"Id: {this.Id} Name: {this.Name}, City: {this.City}, State: {this.State}";
         }
 
         public bool Equals(Restaurant restaurant)

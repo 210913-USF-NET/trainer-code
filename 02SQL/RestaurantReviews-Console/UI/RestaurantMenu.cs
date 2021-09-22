@@ -73,8 +73,8 @@ namespace UI
             Console.WriteLine("State: ");
             newResto.State = Console.ReadLine();
 
-            _bl.AddRestaurant(newResto);
-            Console.WriteLine($"You created {newResto}");
+            Restaurant addedResto = _bl.AddRestaurant(newResto);
+            Console.WriteLine($"You created {addedResto}");
         }
 
         private void ViewAllRestaurants()
