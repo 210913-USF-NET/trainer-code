@@ -1,5 +1,8 @@
 using DL;
 using RRBL;
+using DL.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace UI
 {
@@ -7,9 +10,13 @@ namespace UI
     {
         public static IMenu GetMenu(string menuString)
         {
+            string connectionString = File.ReadAllText(@"../connectionString.txt");
+            DbContextOptions<RestaurantDBContext> options = new DbContextOptionsBuilder<RestaurantDBContext>()
+            .UseSqlServer(connectionString).Options;
+            RestaurantDBContext context = new RestaurantDBContext(options);
             //this is an example of dependency injection
             //I'm "injecting" an instance of business logic layer to restaurant menu, and an implementation of 
-            //IRepo to business logic
+            // IRepo to business logic
             // IRepo dataLayer = new FileRepo();
             // IBL businessLogic = new BL(dataLayer);
             // IMenu restaurantMenu = new RestaurantMenu(businessLogic);
@@ -20,9 +27,9 @@ namespace UI
                 case "main":
                     return new MainMenu();
                 case "restaurant":
-                    return new RestaurantMenu(new BL(new FileRepo()));
+                    return new RestaurantMenu(new BL(new DBRepo(context)));
                 case "review":
-                    return new ReviewMenu(new BL(new FileRepo()));
+                    return new ReviewMenu(new BL(new DBRepo(context)));
                 default:
                     return null;
             }
