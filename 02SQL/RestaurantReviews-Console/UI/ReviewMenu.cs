@@ -8,10 +8,12 @@ namespace UI
     public class ReviewMenu : IMenu
     {
         private IBL _bl;
+        private RestaurantService _restoService;
 
-        public ReviewMenu(IBL bl)
+        public ReviewMenu(IBL bl, RestaurantService restoService)
         {
             _bl = bl;
+            _restoService = restoService;
         }
         public void Start()
         {
@@ -40,83 +42,57 @@ namespace UI
 
         private void WriteAReview()
         {
-            //this is a region
-            reviewStart:
-            Console.WriteLine("Select a restaurant to write a review for");
-            List<Restaurant> allRestaurants = _bl.GetAllRestaurants();
-            if(allRestaurants == null || allRestaurants.Count == 0)
+            Console.WriteLine("Search a restaurant");
+            List<Restaurant> searchResult = _bl.SearchRestaurant(Console.ReadLine());
+            if(searchResult == null || searchResult.Count == 0)
             {
                 Console.WriteLine("No Restaurants :/");
                 return;
             }
-            for(int i = 0; i < allRestaurants.Count; i++)
+            Restaurant selectedRestaurant = _restoService.SelectARestaurant("Pick a restaurant to write review for", searchResult);
+            Console.WriteLine($"You picked {selectedRestaurant.Name}");
+
+            Review reviewToAdd = new Review();
+            reviewToAdd.RestaurantId = selectedRestaurant.Id;
+            rating:
+            Console.WriteLine("Rating (1-5): ");
+            int userRating;
+            bool success = int.TryParse(Console.ReadLine(), out userRating);
+            //if the parse has not been successful, as in the input was not a number
+            if(!success) 
             {
-                Console.WriteLine($"[{i}] {allRestaurants[i]}");
+                //let the user know, and kick them back to try again
+                Console.WriteLine("Invalid input");
+                goto rating;
             }
-            string input = Console.ReadLine();
-            int parsedInput;
-
-            //pass by reference in, out, ref
-            bool parseSuccess = Int32.TryParse(input, out parsedInput);
-
-            //I'm checking to see that parse has been successful
-            //and the result stays within the boundary of the index
-            if(parseSuccess && parsedInput >= 0 && parsedInput < allRestaurants.Count)
+            try
             {
-                Restaurant selectedRestaurant = allRestaurants[parsedInput];
-                Console.WriteLine($"You picked {selectedRestaurant.Name}");
-
-                Review reviewToAdd = new Review();
-                rating:
-                Console.WriteLine("Rating (1-5): ");
-                int userRating;
-                bool success = int.TryParse(Console.ReadLine(), out userRating);
-                //if the parse has not been successful, as in the input was not a number
-                if(!success) 
-                {
-                    //let the user know, and kick them back to try again
-                    Console.WriteLine("Invalid input");
-                    goto rating;
-                }
-                try
-                {
-                    //else, assign the number to rating
-                    reviewToAdd.Rating = userRating;
-                }
-                catch (InputInvalidException e)
-                {
-                    //user entered integer out of bound
-                    Console.WriteLine(e.Message);
-                    goto rating;
-                }
-                finally
-                {
-                    //when do I use this block?
-                    //to clean up a resource or finish my thought
-                    //for example, Log.CloseAndFlush(); to close the logger 
-                }
-                //I'm done adding my rating
-                Console.WriteLine("Notes: ");
-                reviewToAdd.Note = Console.ReadLine();
-
-                //I added the new review to the selected restaurant
-                selectedRestaurant.Reviews.Add(reviewToAdd);
-
-                Restaurant updatedRestaurant = _bl.UpdateRestaurant(selectedRestaurant);
-
-                Console.WriteLine("Review Added successfully");
-                Console.WriteLine(updatedRestaurant);
-                foreach(Review review in updatedRestaurant.Reviews)
-                {
-                    Console.WriteLine(review);
-                }
+                //else, assign the number to rating
+                reviewToAdd.Rating = userRating;
             }
-            else
+            catch (InputInvalidException e)
             {
-                Console.WriteLine("invalid input");
-                //this is how we go to a region
-                goto reviewStart;
+                //user entered integer out of bound
+                Console.WriteLine(e.Message);
+                goto rating;
             }
+            finally
+            {
+                //when do I use this block?
+                //to clean up a resource or finish my thought
+                //for example, Log.CloseAndFlush(); to close the logger 
+            }
+            //I'm done adding my rating
+            Console.WriteLine("Notes: ");
+            reviewToAdd.Note = Console.ReadLine();
+
+            //this needs rejigging to work with db
+            //instead of adding review directly to the restaurant
+            //we'll be adding the review to review table
+            Review addedReview = _bl.AddAReview(reviewToAdd);
+
+            Console.WriteLine("Review Added successfully");
+            Console.WriteLine(addedReview);
         }
     }
 }

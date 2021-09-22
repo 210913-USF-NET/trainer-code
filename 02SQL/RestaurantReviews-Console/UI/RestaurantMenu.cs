@@ -8,10 +8,12 @@ namespace UI
     public class RestaurantMenu : IMenu
     {
         private IBL _bl;
+        private RestaurantService _restoService;
 
-        public RestaurantMenu(IBL bl)
+        public RestaurantMenu(IBL bl, RestaurantService restoService)
         {
             _bl = bl;
+            _restoService = restoService;
         }
 
         public void Start() {
@@ -48,7 +50,25 @@ namespace UI
 
         private void ViewOneRestaurant()
         {
-            throw new NotImplementedException();
+            //First, I'm going to ask for user to gimme a search term to search for
+            //once they select the restaurant
+            //I'm going to grab the restaurant
+            //and its reviews and display them to user
+            Console.WriteLine("Search a restaurant");
+            List<Restaurant> searchResult = _bl.SearchRestaurant(Console.ReadLine());
+            if(searchResult == null || searchResult.Count == 0)
+            {
+                Console.WriteLine("No Restaurants :/");
+                return;
+            }
+            Restaurant selectedRestaurant = _restoService.SelectARestaurant("Pick a restaurant to write review for", searchResult);
+
+            Console.WriteLine(selectedRestaurant);
+            foreach(Review review in selectedRestaurant.Reviews)
+            {
+                Console.WriteLine(review);
+            }
+            
         }
 
         private void CreateRestaurant()

@@ -19,6 +19,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <DocumentationFile>$(AssemblyName)-doc.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

@@ -5,6 +5,8 @@ namespace Models
     {
         public int Id { get; set; }
 
+        public int RestaurantId { get; set; }
+
         //private field
         private int _rating;
         //property

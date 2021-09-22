@@ -14,5 +14,9 @@ namespace RRBL
         Restaurant AddRestaurant(Restaurant resto);
 
         Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
+
+        List<Restaurant> SearchRestaurant(string quertStr);
+
+        Review AddAReview(Review review);
     }
 }

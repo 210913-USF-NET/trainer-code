@@ -67,5 +67,20 @@ namespace DL
         {
             throw new NotImplementedException();
         }
+
+        public List<Restaurant> SearchRestaurant(string queryStr)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Review AddAReview(Review review)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Restaurant GetOneRestaurantById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

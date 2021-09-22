@@ -30,5 +30,15 @@ namespace RRBL
             //add logic to update restaurant
             return _repo.UpdateRestaurant(restoToUpdate);
         }
+
+        public List<Restaurant> SearchRestaurant(string queryStr)
+        {
+            return _repo.SearchRestaurant(queryStr);
+        }
+
+        public Review AddAReview(Review review)
+        {
+            return _repo.AddAReview(review);
+        }
     }
 }

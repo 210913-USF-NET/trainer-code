@@ -27,9 +27,9 @@ namespace UI
                 case "main":
                     return new MainMenu();
                 case "restaurant":
-                    return new RestaurantMenu(new BL(new DBRepo(context)));
+                    return new RestaurantMenu(new BL(new DBRepo(context)), new RestaurantService());
                 case "review":
-                    return new ReviewMenu(new BL(new DBRepo(context)));
+                    return new ReviewMenu(new BL(new DBRepo(context)), new RestaurantService());
                 default:
                     return null;
             }

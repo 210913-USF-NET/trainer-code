@@ -17,6 +17,11 @@ namespace DL
         //this will hold my serialized objects
         private string jsonString;
 
+        public Review AddAReview(Review review)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Adds a new restaurant to json file
         /// </summary>
@@ -51,9 +56,20 @@ namespace DL
             //translate the serialized string into List<Restaurant> object!
             return JsonSerializer.Deserialize<List<Restaurant>>(jsonString);
         }
+
+        public Restaurant GetOneRestaurantById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Restaurant> SearchRestaurant(string queryStr)
+        {
+            throw new NotImplementedException();
+        }
+
         /*
-        everything between these two symbols are commented
-        */
+everything between these two symbols are commented
+*/
 
         /// <summary>
         /// This Method updates restaurant

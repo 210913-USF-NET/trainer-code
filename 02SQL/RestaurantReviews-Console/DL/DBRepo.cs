@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Model = Models;
 using Entity = DL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DL
 {
@@ -58,7 +59,81 @@ namespace DL
 
         public Model.Restaurant UpdateRestaurant(Model.Restaurant restaurantToUpdate)
         {
-            throw new NotImplementedException();
+            Entity.Restaurant restoToUpdate = new Entity.Restaurant() {
+                Id = restaurantToUpdate.Id,
+                Name = restaurantToUpdate.Name,
+                City = restaurantToUpdate.City,
+                State = restaurantToUpdate.State
+            };
+
+            restoToUpdate = _context.Restaurants.Update(restoToUpdate).Entity;
+            _context.SaveChanges();
+            _context.ChangeTracker.Clear();
+
+            return new Model.Restaurant() {
+                Id = restoToUpdate.Id,
+                Name = restoToUpdate.Name,
+                City = restoToUpdate.City,
+                State = restoToUpdate.State
+            };
+        }
+
+        public List<Model.Restaurant> SearchRestaurant(string queryStr)
+        {
+            return _context.Restaurants.Where(
+                resto => resto.Name.Contains(queryStr) || resto.City.Contains(queryStr) || resto.State.Contains(queryStr)
+            ).Select(
+                r => new Model.Restaurant(){
+                    Id = r.Id,
+                    Name = r.Name,
+                    City = r.City,
+                    State = r.State
+                }
+            ).ToList();
+        }
+
+        public Model.Review AddAReview(Model.Review review)
+        {
+            Entity.Review reviewToAdd = new Entity.Review(){
+                Rating = review.Rating,
+                Note = review.Note ?? "",
+                RestaurantId = review.RestaurantId
+            };
+            reviewToAdd = _context.Reviews.Add(reviewToAdd).Entity;
+            _context.SaveChanges();
+
+            return new Model.Review() {
+                Id = reviewToAdd.Id,
+                Rating = reviewToAdd.Rating,
+                Note = reviewToAdd.Note
+            };
+        }
+
+        /// <summary>
+        /// returns Model.Restaurant by restaurant Id
+        /// </summary>
+        /// <param name="id">restuarant Id</param>
+        /// <returns>Model.Restaurant</returns>
+        public Model.Restaurant GetOneRestaurantById(int id)
+        {
+            Entity.Restaurant restoById = 
+                _context.Restaurants
+                .Include("Review")
+                .FirstOrDefault(r => r.Id == id);
+
+            // List<Entity.Review> reviews =
+            //     _context.Reviews.Where(review => review.RestaurantId == restoById.Id).ToList();
+            return new Model.Restaurant() {
+                Id = restoById.Id,
+                Name = restoById.Name,
+                State = restoById.State,
+                City = restoById.City,
+                Reviews = restoById.Reviews.Select(r => new Model.Review(){
+                    Id = r.Id,
+                    Rating = r.Rating,
+                    Note = r.Note
+                }).ToList()
+            };
         }
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DL</name>
+    </assembly>
+    <members>
+        <member name="M:DL.DBRepo.GetOneRestaurantById(System.Int32)">
+            <summary>
+            returns Model.Restaurant by restaurant Id
+            </summary>
+            <param name="id">restuarant Id</param>
+            <returns>Model.Restaurant</returns>
+        </member>
+        <member name="M:DL.FileRepo.AddRestaurant(Models.Restaurant)">
+            <summary>
+            Adds a new restaurant to json file
+            </summary>
+            <param name="resto">restaurant to be added</param>
+            <returns>the added restaurant</returns>
+        </member>
+        <member name="M:DL.FileRepo.GetAllRestaurants">
+            <summary>
+            Gets all restaurant from the Restaurants.json file
+            </summary>
+            <returns>List of all restaurants</returns>
+        </member>
+        <member name="M:DL.FileRepo.UpdateRestaurant(Models.Restaurant)">
+            <summary>
+            This Method updates restaurant
+            </summary>
+            <param name="restaurantToUpdate">Restaurant object to be updated</param>
+            <returns>Updated restaurant object</returns>
+        </member>
+    </members>
+</doc>
