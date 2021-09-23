@@ -63,8 +63,8 @@ namespace UI
             }
             Restaurant selectedRestaurant = _restoService.SelectARestaurant("Pick a restaurant", searchResult);
 
-            Console.WriteLine(selectedRestaurant);
             selectedRestaurant = _bl.GetOneRestaurantById(selectedRestaurant.Id);
+            Console.WriteLine(selectedRestaurant);
             foreach(Review review in selectedRestaurant.Reviews)
             {
                 Console.WriteLine(review);
