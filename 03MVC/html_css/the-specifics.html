@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="top">
+    <header>
+        <nav>
+            <ul><!--Unordered List-->
+                <li>
+                    <a href="./index.html">Intro To Web</a> <!--anchor tag-->
+                </li><!--List Item-->
+                <li>
+                    <a href="./intro.html">Intro to HTML</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <h2>Semantic Elements</h2>
+        <p>Semantic tags define structure and express the meaning of content. Semantic elements include header, footer, article, nav, etc. Non-semantic tags are tags that don't particularly describe its role in its document. Such tags include div or span.</p>
+    </article>
+    <article>
+        <h3>Headings</h3>
+        <p>In HTML, there are 6 levels of heading tags to display titles with varying weights. They look like the following</p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <h3>Head vs Header vs Heading</h3>
+        <p>This is a common html interview question that gets asked often. Know the difference between the three!</p>
+    </article>
+    <article>
+        <h3>Block vs Inline element</h3>
+        <p>Block elements, such as <div>div</div> they take up the whole width of its parent elements width by default</p>
+        <p>Where as, the inline element, such as <span>span</span> only takes up as much space as the content needs.</p>
+    </article>
+    <article>
+        <h3>Styling with HTML</h3>
+        <p>While not recommended, there are certain amount of stylings you can accomplish with html tags</p>
+        <p><b>b tags make things bold</b> and <i>i tags italicize the content</i></p>
+        <p>You can also make the text <small>small</small></p>
+        <p><s>s tags strikes through content</s> and <u>u tags underline</u></p>
+        <p>Note: Not only are these not the best practices, if you use these tags, you are at the mercy of each browser engine to determine how these tags look. You really don't want that. Just think Internet Explorer.</p>
+    </article>
+    article>
+        <h3>Lists</h3>
+        <p>There are two types of lists: Ordered List and Unordered List</p>
+        <ol>
+            <li>Ordered Lists (ol) have enumerators</li>
+            <li>Inside Each List Element</li>
+            <li>There exists list items, li for short</li>
+        </ol>
+        <ul>
+            <li>This is Unordered List (ul)</li>
+            <li>It doesn't have numbers</li>
+            <li>You can also change their bullets through css</li>
+            <li>Or remove them entirely!</li>
+        </ul>
+    </article>
+    <article>
+        <h3>Anchor tags</h3>
+        <p><small>Backbone of the interwebs</small></p>
+        <p>These tags are highly useful tags that you can link either internal or external webpages</p>
+        <p>We use href attribute to define their destination</p>
+        <p>And target attribute to avoid the most annoying phenomenon of anchor tags: opening in the same browser tab</p>
+        <a target="_blank" href="https://google.com">click for google</a>
+        <a href="#top">Jump to Top</a>
+    </article>
+</body>
+</html>
