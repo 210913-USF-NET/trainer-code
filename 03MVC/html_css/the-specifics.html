@@ -83,5 +83,109 @@
         <a target="_blank" href="https://google.com">click for google</a>
         <a href="#top">Jump to Top</a>
     </article>
+    <article>
+        <h3>Tables</h3>
+        <p>Tables are very useful for displaying data, but the structure of html tables can be a bit confusing at first. Let's make one!</p>
+        <table name="pet" border="solid">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Species</th>
+                    <th colspan="3">Favorite Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr> <!--Table Row-->
+                    <td>
+                        Auryn
+                    </td>
+                    <td>
+                        Cat
+                    </td>
+                    <td>
+                        Eating
+                    </td>
+                    <td>
+                        Napping
+                    </td>
+                    <td>
+                        Sunbathing
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pepsi</td>
+                    <td>Dog</td>
+                    <td>Eating</td>
+                    <td>
+                        Running (away)
+                    </td>
+                    <td>
+                        People
+                    </td>
+                </tr>
+                <tr>
+                    <td>Calvin</td>
+                    <td>Dog</td>
+                    <td>Running</td>
+                    <td>jumping</td>
+                    <td>squeaky toys</td>
+                </tr>
+                <tr>
+                    <td>Jackjack</td>
+                    <td rowspan="2">Cat</td>
+                    <td>Chewing on plastic :(</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Mariposa</td>
+                    <td>jumping</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <article>
+        <h3>Form</h3>
+        <form action="" method="POST">
+            <div>
+                <label for="text-input">Text Input</label>
+                <input name="text-input" type="text" placeholder="input your text here" maxlength="10">
+            </div>
+            <div>
+                <label for="number-input">Number Input</label>
+                <input type="number" name="number-input" min="0" max="100">
+            </div>
+            <div>
+                <label for="date-picker">Date Picker</label>
+                <input type="date" name="date-picker">
+                <label for="date-time-picker"></label>
+                <input type="datetime-local" name="date-time-picker">
+            </div>
+            <div>
+                <label for="radio-input">Radio Buttons</label>
+                <input type="radio" name="radio-input" value="1">Radio one
+                <input type="radio" name="radio-input" value="2">Radio two
+                <input type="radio" name="radio-input" value="3">Radio Three
+            </div>
+            <div>
+                <label for="check-box">Check Box</label>
+                <input type="checkbox" name="check-box" value="1">one
+                <input type="checkbox" name="check-box" value="2">two
+                <input type="checkbox" name="check-box" value="3">three
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email">
+            </div>
+            <div>
+                <label for="pw">Password</label>
+                <input type="password" name="pw" required>
+            </div>
+            <div>
+                <input type="reset" value="Reset ME">
+                <input type="submit">
+            </div>
+        </form>
+    </article>
 </body>
 </html>
