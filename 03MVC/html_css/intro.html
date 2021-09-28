@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro To HTML</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul><!--Unordered List-->
+                <li>
+                    <a href="./index.html">Intro To Web</a> <!--anchor tag-->
+                </li><!--List Item-->
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <h1>What is HTML?</h1> <!--Heading Level 1, total 6-->
+        <p>
+            HTML is a hypertext markup language, used to define the structure of web pages.
+        </p> <!--Paragraph-->
+        <p>
+            HTML uses tag (or we also call them elements) and attributes inside those elements to describe the structure
+        </p>
+    </div>
+    <div>
+        <h2>
+            How are pages loaded?
+        </h2>
+        <ol> <!--Ordered List-->
+            <li>
+                Request: the client(aka your web browser + the end user) requests the resource from the server for a particular url
+            </li>
+            <li>
+                Response: The server responds with the resources (the page and anything else it needs to build and load)
+            </li>
+            <li>
+                Build: Browser builds the resources (interprets js, builds a dom, etc.)
+            </li>
+            <li>
+                Render: Browser engine then renders the page for you. While each browser implements HTML5 and CSS3 standard, the implementation differs a bit from a browser to browser. Some of these can be cute, others not so much. (akin to different sql dialects)
+            </li>
+        </ol>
+    </div>
+    <div>
+        <h2>How are pages organized?</h2>
+        <p>All html pages begin with the tag <pre><code>&lt;!DOCTYPE html&gt;</code></pre>. This denotes that this document is of html type</p>
+        <p>Further more, the pages are organized in the following way
+            <pre><code> 
+                &lt;html&gt;
+                    &lt;head&gt;
+    
+                    &lt;/head&gt;
+                    &lt;body&gt;
+    
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
+        </p>
+    </div>
+    <div>
+        <h3>The Head</h3>
+        <p>
+            The head tag in html contains meta data (the data about itself) about the page. In the head tag, it contains information such as which encoding it is using and title for the page.
+            This is also the place to include the link to external stylesheets and <code>&lt;style&gt;&lt;/style&gt</code> tag.
+        </p>
+        <h3>The Body</h3>
+        <p>
+            This is where the content of the page goes to. Everything you see in the web browser's viewport is here.
+        </p>
+    </div>
+    <div>
+        <h3>Attributes</h3>
+        <p>Attributes are fields that provides additional information about a tag. For example, the anchor tag has href attribute to describes its destination, image tag (img) has src attribute to denote the resource's location</p>
+        <p><b>Global attributes</b> are attributes that are available to all elements regardless of their type. Examples of these are thing like, id, class</p>
+        <p>
+            We use Classes and Id attributes to id a particular element or a set of elements. Id is used to uniquely identify an element, where class is used to identify all elements with that class.
+        </p>
+    </div>
+    <div>
+        <h2 id="dom-heading">DOM</h2>
+        <p>DOM stands for Document Object Model, and it is a tree-like structure to describe the structure of a web page.</p>
+        <img style="max-width: 500px;" src="https://imgr.search.brave.com/fv6itoshEwnE-ZppLuiwyzSLg6cSnr5956UVW8VCRIQ/fit/1200/1200/ce/1/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzVhL0RP/TS1tb2RlbC5zdmcv/MTIwMHB4LURPTS1t/b2RlbC5zdmcucG5n" alt="">
+
+        <h3>The Selectors</h3>
+        <p>We interact with and traverse the DOM and the elements inside it using the DOM interface. It exposes selectors like document.GetElementById(), document.GetElementByClassName(), document.GetElementByTagName().. etc. To manipulate html elements using javascript</p>
+    </div>
+</body>
+</html>

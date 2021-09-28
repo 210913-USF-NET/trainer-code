@@ -37,7 +37,7 @@ Git is a distributed version control system that helps developers to collaborate
     - then run ```git rm --cached <file>``` or ```git rm -r --cached <folder>``` to remove the files and/or folders you don't want being tracked from remote repository but keep it in your local repository.
 - "OH NO. MY CODE BROKE BEYOND ALL REPAIR"
     - Also do not despair
-    - This is one of the main benefits of using git AND commiting frequently
+    - This is one of the main benefits of using git AND committing frequently
     - First, do ```git log``` to figure out which commit was the last commit with working code
     - Once you decide on the commit, copy the first 5-6 letters of that long commit id
     - Type 'q' to get out of the log screen
@@ -46,4 +46,4 @@ Git is a distributed version control system that helps developers to collaborate
 ## Generating .gitignore file
 - If your application consists of only .NET stuff, and you need to only ignore .NET files, you can simply use ```dotnet new gitignore``` command at the root source directory to have .NET sdk generate one for you
 - If your stack is bigger than plain old .NET, [gitignore.io](https://gitignore.io) can help.
-- if you want to ignore any additional files those templatese did not include for you, just add the file/folder path to the gitignore file
+- if you want to ignore any additional files those templates did not include for you, just add the file/folder path to the gitignore file

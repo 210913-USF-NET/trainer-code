@@ -42,3 +42,19 @@ INSERT INTO Reviews (Rating, Note, RestaurantId) VALUES
 (4, 'Portion size too big but the food is delicious', 5);
 
 Select * From Reviews;
+
+
+Select top 2 Reviews.Rating, Reviews.Note, Restaurants.Name from Reviews 
+join Restaurants on Reviews.RestaurantId = Restaurants.Id
+where Restaurants.Name like '%salt%'
+order by Reviews.Rating desc;
+
+Select Restaurants.Name, AVG(Reviews.Rating) as 'Average Rating' FROM
+Reviews join Restaurants on Reviews.RestaurantId = Restaurants.Id
+group by Restaurants.Name
+order by Restaurants.Name asc;
+
+Select Count(Reviews.Rating), Restaurants.Name from
+Reviews join Restaurants on Reviews.RestaurantId = Restaurants.Id
+where Reviews.Rating > 3
+group by Restaurants.Name;
