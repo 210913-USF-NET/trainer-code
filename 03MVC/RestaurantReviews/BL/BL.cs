@@ -17,7 +17,18 @@ namespace RRBL
 
         public List<Restaurant> GetAllRestaurants()
         {
-            return _repo.GetAllRestaurants();
+            List<Restaurant> allResto = _repo.GetAllRestaurants();
+            foreach(Restaurant resto in allResto)
+            {
+                if (resto.Reviews.Count == 0) continue;
+                int sum = 0;
+                foreach(Review review in resto.Reviews)
+                {
+                    sum += review.Rating;
+                }
+                resto.Rating = sum / resto.Reviews.Count;
+            }
+            return allResto;
         }
 
         public Restaurant AddRestaurant(Restaurant resto)

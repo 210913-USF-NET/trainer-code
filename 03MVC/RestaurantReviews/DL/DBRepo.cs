@@ -17,14 +17,8 @@ namespace DL
         }
         public Restaurant AddRestaurant(Restaurant resto)
         {
-            Restaurant restoToAdd = new Restaurant(){
-                Name = resto.Name,
-                City = resto.City ?? "",
-                State = resto.State ?? ""
-            };
-            
             //this method adds the restoToAdd obj to change tracker
-            restoToAdd = _context.Add(restoToAdd).Entity;
+            resto = _context.Add(resto).Entity;
 
             //the "changes" don't get executed until you call the SaveChanges method
             _context.SaveChanges();
@@ -32,13 +26,7 @@ namespace DL
             //this clears the changetracker so it returns to a clean slate
             _context.ChangeTracker.Clear();
 
-            return new Restaurant()
-            {
-                Id = restoToAdd.Id,
-                Name = restoToAdd.Name,
-                City = restoToAdd.City,
-                State = restoToAdd.State
-            };
+            return resto;
         }
 
         public List<Restaurant> GetAllRestaurants()
@@ -47,7 +35,9 @@ namespace DL
             //Gets the Entities.Restaurant
             //and we have to convert it to Model.Restaurant
             //.Select() is similar in behavior to .map() is js
-            return _context.Restaurants.Select(
+            return _context.Restaurants
+                .Include("Reviews")
+                .Select(
                 restaurant => new Restaurant() {
                     Id = restaurant.Id,
                     Name = restaurant.Name,

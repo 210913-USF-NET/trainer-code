@@ -66,6 +66,8 @@ namespace Models
 
         public List<Review> Reviews { get; set; }
 
+        public double Rating { get; set; }
+
         // //this is field
         // private string _name;
 

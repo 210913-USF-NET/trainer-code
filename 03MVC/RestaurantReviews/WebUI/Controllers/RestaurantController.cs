@@ -24,12 +24,6 @@ namespace WebUI.Controllers
             return View(allResto);
         }
 
-        // GET: RestaurantController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: RestaurantController/Create
         public ActionResult Create()
         {
@@ -39,11 +33,17 @@ namespace WebUI.Controllers
         // POST: RestaurantController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Restaurant restaurant)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                //if the data in my form is valid
+                if(ModelState.IsValid)
+                {
+                    _bl.AddRestaurant(restaurant);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {
