@@ -1,1 +1,17 @@
-/* external style sheet */
+#click-me {
+    color: rgb(255, 174, 0)
+}
+
+#click-me:visited {
+    color: gray;
+}
+
+#click-me:hover {
+    color: #d30404;
+}
+#box-model-button {
+    min-height: 10px;
+}
+#box-model-button:hover > button {
+    display: none;
+}
