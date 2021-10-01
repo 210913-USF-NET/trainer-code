@@ -20,5 +20,7 @@ namespace RRBL
         Review AddAReview(Review review);
 
         Restaurant GetOneRestaurantById(int id);
+
+        void DeleteRestaurant(int id);
     }
 }

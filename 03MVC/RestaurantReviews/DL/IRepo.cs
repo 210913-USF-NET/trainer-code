@@ -14,5 +14,7 @@ namespace DL
         Review AddAReview(Review review);
 
         Restaurant GetOneRestaurantById(int id);
+
+        void RemoveRestaurant(int id);
     }
 }

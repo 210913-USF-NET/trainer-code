@@ -13,6 +13,11 @@ namespace Models
             this.Reviews = new List<Review>();
         }
 
+        public Restaurant(int id) : this()
+        {
+            this.Id = id;
+        }
+
         //constructor overloading
         public Restaurant(string name) : this()
         {
@@ -43,7 +48,7 @@ namespace Models
                 //this pattern means that the string only contains alphanumeric characters, exclamation point, and question mark.
                 Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
 
-                if(value.Length == 0)
+                if(value?.Length == 0)
                 {
                     InputInvalidException e = new InputInvalidException("Restaurant name can't be empty");
                     Log.Warning(e.Message);
@@ -65,8 +70,6 @@ namespace Models
         public string State { get; set; }
 
         public List<Review> Reviews { get; set; }
-
-        public double Rating { get; set; }
 
         // //this is field
         // private string _name;

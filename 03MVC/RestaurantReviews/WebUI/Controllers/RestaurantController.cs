@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RRBL;
 using Models;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
@@ -20,7 +21,8 @@ namespace WebUI.Controllers
         // GET: RestaurantController
         public ActionResult Index()
         {
-            List<Restaurant> allResto = _bl.GetAllRestaurants();
+            List<RestaurantVM> allResto = _bl.GetAllRestaurants()
+                                              .Select(r => new RestaurantVM(r)).ToList();
             return View(allResto);
         }
 
@@ -33,19 +35,19 @@ namespace WebUI.Controllers
         // POST: RestaurantController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Restaurant restaurant)
+        public ActionResult Create(RestaurantVM restaurant)
         {
             try
             {
                 //if the data in my form is valid
                 if(ModelState.IsValid)
                 {
-                    _bl.AddRestaurant(restaurant);
+                    _bl.AddRestaurant(restaurant.ToModel());
                     return RedirectToAction(nameof(Index));
                 }
                 return View();
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
@@ -54,28 +56,33 @@ namespace WebUI.Controllers
         // GET: RestaurantController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(new RestaurantVM(_bl.GetOneRestaurantById(id)));
         }
 
         // POST: RestaurantController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, RestaurantVM restaurant)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _bl.UpdateRestaurant(restaurant.ToModel());
+                    return RedirectToAction(nameof(Index));
+                }
+                return RedirectToAction(nameof(Edit));
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Edit));
             }
         }
 
         // GET: RestaurantController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(new RestaurantVM(_bl.GetOneRestaurantById(id)));
         }
 
         // POST: RestaurantController/Delete/5
@@ -85,9 +92,10 @@ namespace WebUI.Controllers
         {
             try
             {
+                _bl.DeleteRestaurant(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }

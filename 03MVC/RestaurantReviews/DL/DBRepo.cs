@@ -120,6 +120,7 @@ namespace DL
                 //and grabs all reviews that references the selected restaurant
                 //by restaurantId
                 // .Include("Reviews")
+                .AsNoTracking()
                 .Include(r => r.Reviews)
                 .FirstOrDefault(r => r.Id == id);
 
@@ -134,6 +135,16 @@ namespace DL
                     Note = r.Note
                 }).ToList()
             };
+        }
+        /// <summary>
+        /// Deletes a restaurant. 
+        /// </summary>
+        /// <param name="id">id of the restaurant to be deleted</param>
+        public void RemoveRestaurant(int id)
+        {
+            _context.Restaurants.Remove(GetOneRestaurantById(id));
+            _context.SaveChanges();
+            _context.ChangeTracker.Clear();
         }
     }
 }

@@ -11,25 +11,11 @@
             <param name="id">restuarant Id</param>
             <returns>Model.Restaurant</returns>
         </member>
-        <member name="M:DL.FileRepo.AddRestaurant(Models.Restaurant)">
+        <member name="M:DL.DBRepo.RemoveRestaurant(System.Int32)">
             <summary>
-            Adds a new restaurant to json file
+            Deletes a restaurant. 
             </summary>
-            <param name="resto">restaurant to be added</param>
-            <returns>the added restaurant</returns>
-        </member>
-        <member name="M:DL.FileRepo.GetAllRestaurants">
-            <summary>
-            Gets all restaurant from the Restaurants.json file
-            </summary>
-            <returns>List of all restaurants</returns>
-        </member>
-        <member name="M:DL.FileRepo.UpdateRestaurant(Models.Restaurant)">
-            <summary>
-            This Method updates restaurant
-            </summary>
-            <param name="restaurantToUpdate">Restaurant object to be updated</param>
-            <returns>Updated restaurant object</returns>
+            <param name="id">id of the restaurant to be deleted</param>
         </member>
     </members>
 </doc>
