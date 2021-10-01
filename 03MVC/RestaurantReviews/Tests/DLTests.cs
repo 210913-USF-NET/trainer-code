@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Entity = DL.Entities;
 using Xunit;
 using DL;
 using Models;
@@ -16,7 +15,7 @@ namespace Tests
     //Microsoft.EntityFrameworkCore.Sqlite packages installed in your Test project
     public class DLTests
     {
-        private readonly DbContextOptions<Entity.RestaurantDBContext> options;
+        private readonly DbContextOptions<RRDBContext> options;
 
         public DLTests()
         {
@@ -24,7 +23,7 @@ namespace Tests
             //using options builder everytime we instantiate DLTests class
             //and using SQlite's in memory db
             //instead of our real db
-            options = new DbContextOptionsBuilder<Entity.RestaurantDBContext>()
+            options = new DbContextOptionsBuilder<RRDBContext>()
                         .UseSqlite("Filename=Test.db").Options;
             Seed();
         }
@@ -33,7 +32,7 @@ namespace Tests
         [Fact]
         public void GetAllRestaurantsShouldGetAllRestaurants()
         {
-            using(var context = new Entity.RestaurantDBContext(options))
+            using(var context = new RRDBContext(options))
             {
                 //Arrange
                 IRepo repo = new DBRepo(context);
@@ -56,7 +55,7 @@ namespace Tests
         [Fact]
         public void AddingARestaurantShouldAddARestaurant()
         {
-            using(var context = new Entity.RestaurantDBContext(options))
+            using(var context = new RRDBContext(options))
             {
                 //Arrange with my repo and the item i'm going to add
                 IRepo repo = new DBRepo(context);
@@ -71,21 +70,21 @@ namespace Tests
                 repo.AddRestaurant(restoToAdd);
             }
 
-            using(var context = new Entity.RestaurantDBContext(options))
+            using(var context = new RRDBContext(options))
             {
                 //Assert
-                Entity.Restaurant resto = context.Restaurants.FirstOrDefault(r => r.Id == 3);
+                Restaurant resto = context.Restaurants.FirstOrDefault(r => r.Id == 3);
 
                 Assert.NotNull(resto);
-                Assert.Equal(resto.Name, "Chipotle");
-                Assert.Equal(resto.City, "Warner Robins");
-                Assert.Equal(resto.State, "GA");
+                Assert.Equal("Chipotle", resto.Name);
+                Assert.Equal("Warner Robins", resto.City);
+                Assert.Equal("GA", resto.State);
             }
         }
 
         private void Seed()
         {
-            using(var context = new Entity.RestaurantDBContext(options))
+            using(var context = new RRDBContext(options))
             {
                 //first, we are going to make sure
                 //that the DB is in clean slate
@@ -93,26 +92,26 @@ namespace Tests
                 context.Database.EnsureCreated();
 
                 context.Restaurants.AddRange(
-                    new Entity.Restaurant(){
+                    new Restaurant(){
                         Id = 1,
                         Name = "Bone Fish",
                         City = "Lakeland",
                         State = "FL",
-                        Reviews = new List<Entity.Review>(){
-                            new Entity.Review(){
+                        Reviews = new List<Review>(){
+                            new Review(){
                                 Id = 1,
                                 Rating = 5,
                                 Note = "Best Sea bass I've ever had"
                             }
                         }
                     },
-                    new Entity.Restaurant(){
+                    new Restaurant(){
                         Id = 2,
                         Name = "Grumpy Monk",
                         City = "Myrtle Beach",
                         State = "SC",
-                        Reviews = new List<Entity.Review>(){
-                            new Entity.Review(){
+                        Reviews = new List<Review>(){
+                            new Review(){
                                 Id = 2,
                                 Rating = 4,
                                 Note = "Beer selection in infinite and everchanging"

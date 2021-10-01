@@ -43,7 +43,10 @@ namespace WebUI.Controllers
         // GET: ReviewController/Create?RestaurantId=5
         public ActionResult Create(string restaurantId)
         {
-            return View(new Review(int.Parse(restaurantId)));
+            int restoId = int.Parse(restaurantId);
+            //ViewBag.Restaurant = _bl.GetOneRestaurantById(restoId);
+            ViewBag.Restaurant = _bl.GetOneRestaurantById(restoId);
+            return View(new Review(restoId));
         }
 
         // POST: ReviewController/Create
