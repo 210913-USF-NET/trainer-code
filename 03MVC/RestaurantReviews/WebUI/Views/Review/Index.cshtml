@@ -1,0 +1,42 @@
+﻿@model WebUI.Models.RestaurantVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+<p>@Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State)</p>
+<p>@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)</p>
+
+<p>
+    <a asp-action="Create" asp-route-restaurantId="@Model.Id">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews[0].Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reviews) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

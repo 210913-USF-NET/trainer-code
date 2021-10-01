@@ -97,7 +97,7 @@ namespace WebUI.Controllers
             }
             catch (Exception e)
             {
-                return View();
+                return RedirectToAction("Error", "Home");
             }
         }
     }

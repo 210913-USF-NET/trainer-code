@@ -114,8 +114,7 @@ namespace DL
         /// <returns>Model.Restaurant</returns>
         public Restaurant GetOneRestaurantById(int id)
         {
-            Restaurant restoById = 
-                _context.Restaurants
+            return _context.Restaurants
                 //this include method joins reviews table with the restaurant table
                 //and grabs all reviews that references the selected restaurant
                 //by restaurantId
@@ -123,18 +122,6 @@ namespace DL
                 .AsNoTracking()
                 .Include(r => r.Reviews)
                 .FirstOrDefault(r => r.Id == id);
-
-            return new Restaurant() {
-                Id = restoById.Id,
-                Name = restoById.Name,
-                State = restoById.State,
-                City = restoById.City,
-                Reviews = restoById.Reviews.Select(r => new Review(){
-                    Id = r.Id,
-                    Rating = r.Rating,
-                    Note = r.Note
-                }).ToList()
-            };
         }
         /// <summary>
         /// Deletes a restaurant. 

@@ -18,10 +18,11 @@ namespace WebUI.Models
             this.Name = resto.Name;
             this.City = resto.City;
             this.State = resto.State;
+            this.Reviews = resto.Reviews;
         }
         public int Id { get; set; }
 
-        [Display(Name ="Restaurant Name")]
+        [Display(Name = "Restaurant Name")]
         [Required]
         [RegularExpression("^[a-zA-Z0-9 !?']+$", ErrorMessage = "Restaurant name can only have alphanumeric characters, !, and ?.")]
         public string Name { get; set; }
@@ -31,6 +32,8 @@ namespace WebUI.Models
         public string State { get; set; }
 
         public double Rating { get; set; }
+
+        public List<Review> Reviews { get; set; }
 
         public Restaurant ToModel()
         {
@@ -44,8 +47,10 @@ namespace WebUI.Models
                     City = this.City,
                     State = this.State
                 };
+
                 //ternary 
                 // IfStatement ? ifTrue : ifFalse
+                // null checker
                 // ifExists/notNull ?? ifFalse
                 // IsNull?.Prperty
             }

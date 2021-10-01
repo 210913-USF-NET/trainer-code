@@ -1,8 +1,17 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Models
 {
     public class Review
     {
+        public Review() { }
+
+        //constructor with restaurantId
+        public Review(int restoId)
+        {
+            this.RestaurantId = restoId;
+        }
         public int Id { get; set; }
 
         public int RestaurantId { get; set; }
@@ -10,6 +19,8 @@ namespace Models
         //private field
         private int _rating;
         //property
+        [Required]
+        [Range(1,5)]
         public int Rating 
         {
             get
@@ -28,6 +39,7 @@ namespace Models
                 }
             }
         }
+
         public string Note { get; set; }
 
         public override string ToString()
