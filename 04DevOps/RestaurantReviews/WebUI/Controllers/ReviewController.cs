@@ -30,7 +30,7 @@ namespace WebUI.Controllers
             RestaurantVM resto = new RestaurantVM(_bl.GetOneRestaurantById(id));
             if (resto.Reviews.Count > 0)
             {
-                int sum = 0;
+                double sum = 0;
                 foreach (Review review in resto.Reviews)
                 {
                     sum += review.Rating;

@@ -22,7 +22,7 @@ namespace WebUI.Controllers
         public ActionResult Index()
         {
             List<RestaurantVM> allResto = _bl.GetAllRestaurants()
-                                              .Select(r => new RestaurantVM(r)).ToList();
+                                            .Select(r => new RestaurantVM(r)).ToList();
             return View(allResto);
         }
 
