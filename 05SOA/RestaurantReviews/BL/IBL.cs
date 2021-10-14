@@ -18,7 +18,9 @@ namespace RRBL
 
         List<Restaurant> SearchRestaurant(string quertStr);
 
-       Task<Review> AddAReviewAsync(Review review);
+        Task<List<Review>> GetAllReviewsAsync();
+
+        Task<Review> AddAReviewAsync(Review review);
 
         Restaurant GetOneRestaurantById(int id);
 

@@ -116,6 +116,25 @@ namespace DL
             };
         }
 
+        public async Task<List<Review>> GetAllReviewsAsync()
+        {
+            //select * from Restaurants in sql query
+            //Gets the Entities.Restaurant
+            //and we have to convert it to Model.Restaurant
+            //.Select() is similar in behavior to .map() is js
+
+            return await _context.Reviews
+                .Select(r => r).ToListAsync();
+
+            //same result, in query syntax
+            // return (from resto in _context.Restaurants select new Model.Restaurant(){
+            //     Id = resto.Id,
+            //     Name = resto.Name,
+            //     State = resto.State,
+            //     City = resto.City
+            // }).ToList();
+        }
+
         /// <summary>
         /// returns Model.Restaurant by restaurant Id
         /// </summary>
