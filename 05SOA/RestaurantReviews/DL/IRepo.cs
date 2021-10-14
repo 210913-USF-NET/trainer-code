@@ -16,6 +16,6 @@ namespace DL
 
         Restaurant GetOneRestaurantById(int id);
 
-        void RemoveRestaurant(int id);
+        Task RemoveRestaurantAsync(int id);
     }
 }

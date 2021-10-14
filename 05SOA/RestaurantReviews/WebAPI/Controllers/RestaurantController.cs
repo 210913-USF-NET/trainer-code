@@ -60,9 +60,10 @@ namespace WebAPI.Controllers
 
         // DELETE api/<RestaurantController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             //!Fast Just Furious
+          await _bl.DeleteRestaurantAsync(id);
         }
     }
 }

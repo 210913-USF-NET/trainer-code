@@ -22,6 +22,6 @@ namespace RRBL
 
         Restaurant GetOneRestaurantById(int id);
 
-        void DeleteRestaurant(int id);
+        Task DeleteRestaurantAsync(int id);
     }
 }

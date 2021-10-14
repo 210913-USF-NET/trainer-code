@@ -127,10 +127,10 @@ namespace DL
         /// Deletes a restaurant. 
         /// </summary>
         /// <param name="id">id of the restaurant to be deleted</param>
-        public void RemoveRestaurant(int id)
+        public async Task RemoveRestaurantAsync(int id)
         {
-            _context.Restaurants.Remove(GetOneRestaurantById(id));
-            _context.SaveChanges();
+            await _context.Restaurants.Remove(GetOneRestaurantByIdAsync(id));
+            await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
     }
