@@ -113,16 +113,9 @@ namespace DL
             //Gets the Entities.Restaurant
             //and we have to convert it to Model.Restaurant
             //.Select() is similar in behavior to .map() is js
-            return _context.Reviews
-                .Select(
-                review => new Review()
-                {
-                    Id = review.Id,
-                    RestaurantId = review.RestaurantId,
-                    Rating = review.Rating,
-                    Note = review.Note
-                }
-            ).ToList();
+
+            return await _context.Reviews
+                .Select(r => r).ToListAsync();
 
             //same result, in query syntax
             // return (from resto in _context.Restaurants select new Model.Restaurant(){
