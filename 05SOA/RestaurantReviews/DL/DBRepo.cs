@@ -124,7 +124,7 @@ namespace DL
                 .FirstOrDefault(r => r.Id == id);
         }
 
-        public Review GetOneReviewById(int id)
+        public async Task<Review> GetOneReviewByIdAsync(int id)
         {
             return _context.Reviews
                 .AsNoTracking()

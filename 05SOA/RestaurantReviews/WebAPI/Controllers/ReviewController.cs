@@ -31,9 +31,9 @@ namespace WebAPI.Controllers
 
         // GET api/<ReviewController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            Review foundReview = _bl.GetOneReviewById(id);
+            Review foundReview = await _bl.GetOneReviewByIdAsync(id);
             if (foundReview != null)
             {
                 return Ok(foundReview);

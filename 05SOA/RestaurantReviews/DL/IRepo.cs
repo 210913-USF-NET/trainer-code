@@ -16,7 +16,7 @@ namespace DL
 
         Restaurant GetOneRestaurantById(int id);
 
-        Review GetOneReviewById(int id);
+        Task<Review> GetOneReviewByIdAsync(int id);
 
         void RemoveRestaurant(int id);
     }
