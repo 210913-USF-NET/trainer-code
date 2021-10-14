@@ -55,14 +55,14 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
-
+            //Shrek 5ever
         }
 
         // DELETE api/<RestaurantController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-
+            //!Fast Just Furious
         }
     }
 }
