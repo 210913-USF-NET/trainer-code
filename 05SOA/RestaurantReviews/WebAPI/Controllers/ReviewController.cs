@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models;
+using RRBL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +14,18 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
+        private IBL _bl;
+        public ReviewController(IBL bl)
+        {
+            _bl = bl;
+        }
+
         // GET: api/<ReviewController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Review>> Get()
         {
             //Team Carlos
-            return new string[] { "value1", "value2" };
+            return await _bl.GetAllReviewsAsync();
         }
 
         // GET api/<ReviewController>/5

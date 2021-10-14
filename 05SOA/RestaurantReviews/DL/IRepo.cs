@@ -12,6 +12,8 @@ namespace DL
 
         List<Restaurant> SearchRestaurant(string queryStr);
 
+        Task<List<Review>> GetAllReviewsAsync();
+
         Review AddAReview(Review review);
 
         Restaurant GetOneRestaurantById(int id);

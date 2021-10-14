@@ -37,6 +37,11 @@ namespace RRBL
             return _repo.SearchRestaurant(queryStr);
         }
 
+        public async Task<List<Review>> GetAllReviewsAsync()
+        {
+            return await _repo.GetAllReviewsAsync();
+        }
+
         public Review AddAReview(Review review)
         {
             return _repo.AddAReview(review);
