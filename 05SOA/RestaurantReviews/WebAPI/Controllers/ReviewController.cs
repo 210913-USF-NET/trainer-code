@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
+        /// <summary>
+        /// Retrieve all reviews from the database
+        /// </summary>
+        /// <returns>list of reviews (perhaps in actionresult?)</returns>
         // GET: api/<ReviewController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -20,6 +25,11 @@ namespace WebAPI.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        /// <summary>
+        /// Retrieve reviews by restaurant Id
+        /// </summary>
+        /// <param name="id">Id of restaurant to fetch the review for</param>
+        /// <returns>List of reviews for that particular restaurant</returns>
         // GET api/<ReviewController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -28,9 +38,14 @@ namespace WebAPI.Controllers
             return "value";
         }
 
+        /// <summary>
+        /// Creates a new review
+        /// </summary>
+        /// <param name="reviewToAdd">A review object to add</param>
+        /// <returns>added review object</returns>
         // POST api/<ReviewController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Review reviewToAdd)
         {
             //Team Garlic
         }

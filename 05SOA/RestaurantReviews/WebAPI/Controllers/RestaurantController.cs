@@ -51,18 +51,31 @@ namespace WebAPI.Controllers
             return Created("api/[controller]", addedRestaurant);
         }
 
+        /// <summary>
+        /// Updates Restaurant By Id and value
+        /// </summary>
+        /// <param name="id">Id of a restaurant to be updated</param>
+        /// <param name="restoToUpdate">Restaurant to be updated</param>
+        /// <returns>Updated Restaurant</returns>
         // PUT api/<RestaurantController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Restaurant restoToUpdate)
         {
             //Shrek 5ever
         }
 
+        /// <summary>
+        /// Deletes restaurant by id
+        /// </summary>
+        /// <param name="id">id of restaurant to be deleted</param>
+        /// <returns>Status code</returns>
         // DELETE api/<RestaurantController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
             //!Fast Just Furious
+            //Call delete resto bl method here
+            //return some kind of status
         }
     }
 }
