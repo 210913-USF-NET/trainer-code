@@ -24,6 +24,8 @@ namespace RRBL
 
         Task<Restaurant> GetOneRestaurantByIdAsync(int id);
 
+        Task<Review> GetOneReviewByIdAsync(int id);
+
         Task DeleteRestaurantAsync(int id);
     }
 }

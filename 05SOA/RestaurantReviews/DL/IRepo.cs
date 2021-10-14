@@ -18,6 +18,8 @@ namespace DL
 
         Task<Restaurant> GetOneRestaurantByIdAsync(int id);
 
+        Task<Review> GetOneReviewByIdAsync(int id);
+
         Task RemoveRestaurantAsync(int id);
     }
 }
