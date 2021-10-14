@@ -14,7 +14,7 @@ namespace RRBL
 
         Task<Restaurant> AddRestaurantAsync(Restaurant resto);
 
-        Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
+        Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate);
 
         List<Restaurant> SearchRestaurant(string quertStr);
 

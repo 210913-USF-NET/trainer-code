@@ -26,10 +26,10 @@ namespace RRBL
             return await _repo.AddRestaurantAsync(resto);
         }
 
-        public Restaurant UpdateRestaurant(Restaurant restoToUpdate)
+        public async Task<Restaurant> UpdateRestaurantAsync(Restaurant restoToUpdate)
         {
             //add logic to update restaurant
-            return _repo.UpdateRestaurant(restoToUpdate);
+            return await _repo.UpdateRestaurantAsync(restoToUpdate);
         }
 
         public List<Restaurant> SearchRestaurant(string queryStr)

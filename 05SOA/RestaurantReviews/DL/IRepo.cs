@@ -8,7 +8,7 @@ namespace DL
     {
         Task<Restaurant> AddRestaurantAsync(Restaurant resto);
         List<Restaurant> GetAllRestaurants();
-        Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
+        Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate);
 
         List<Restaurant> SearchRestaurant(string queryStr);
 
