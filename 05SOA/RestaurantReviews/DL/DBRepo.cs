@@ -55,24 +55,18 @@ namespace DL
             // }).ToList();
         }
 
-        public Restaurant UpdateRestaurant(Restaurant restaurantToUpdate)
+        public async Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate)
         {
-            Restaurant restoToUpdate = new Restaurant() {
+
+            _context.Restaurants.Update(restaurantToUpdate);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+
+            return new Restaurant() {
                 Id = restaurantToUpdate.Id,
                 Name = restaurantToUpdate.Name,
                 City = restaurantToUpdate.City,
                 State = restaurantToUpdate.State
-            };
-
-            restoToUpdate = _context.Restaurants.Update(restoToUpdate).Entity;
-            _context.SaveChanges();
-            _context.ChangeTracker.Clear();
-
-            return new Restaurant() {
-                Id = restoToUpdate.Id,
-                Name = restoToUpdate.Name,
-                City = restoToUpdate.City,
-                State = restoToUpdate.State
             };
         }
 
@@ -90,7 +84,22 @@ namespace DL
             ).ToList();
         }
 
-        public Review AddAReview(Review review)
+
+        public async Task<Review> AddAReviewAsync(Review review)
+        {
+            //this method adds the restoToAdd obj to change tracker
+            await _context.AddAsync(review);
+
+            //the "changes" don't get executed until you call the SaveChanges method
+            await _context.SaveChangesAsync();
+
+            //this clears the changetracker so it returns to a clean slate
+            _context.ChangeTracker.Clear();
+
+            return review;
+        }
+
+        public async Task<Review> AddAReview(Review review)
         {
             Review reviewToAdd = new Review(){
                 Rating = review.Rating,
@@ -105,6 +114,25 @@ namespace DL
                 Rating = reviewToAdd.Rating,
                 Note = reviewToAdd.Note
             };
+        }
+
+        public async Task<List<Review>> GetAllReviewsAsync()
+        {
+            //select * from Restaurants in sql query
+            //Gets the Entities.Restaurant
+            //and we have to convert it to Model.Restaurant
+            //.Select() is similar in behavior to .map() is js
+
+            return await _context.Reviews
+                .Select(r => r).ToListAsync();
+
+            //same result, in query syntax
+            // return (from resto in _context.Restaurants select new Model.Restaurant(){
+            //     Id = resto.Id,
+            //     Name = resto.Name,
+            //     State = resto.State,
+            //     City = resto.City
+            // }).ToList();
         }
 
         /// <summary>
@@ -135,10 +163,10 @@ namespace DL
         /// Deletes a restaurant. 
         /// </summary>
         /// <param name="id">id of the restaurant to be deleted</param>
-        public void RemoveRestaurant(int id)
+        public async Task RemoveRestaurantAsync(int id)
         {
-            _context.Restaurants.Remove(GetOneRestaurantById(id));
-            _context.SaveChanges();
+            await _context.Restaurants.Remove(GetOneRestaurantByIdAsync(id));
+            await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }
     }

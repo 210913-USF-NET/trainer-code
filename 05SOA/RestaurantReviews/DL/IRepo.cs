@@ -8,16 +8,16 @@ namespace DL
     {
         Task<Restaurant> AddRestaurantAsync(Restaurant resto);
         List<Restaurant> GetAllRestaurants();
-        Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
+        Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate);
 
         List<Restaurant> SearchRestaurant(string queryStr);
 
-        Review AddAReview(Review review);
+        Task<List<Review>> GetAllReviewsAsync();
 
-        Restaurant GetOneRestaurantById(int id);
+        Task<Review> AddAReviewAsync(Review review);
 
         Task<Review> GetOneReviewByIdAsync(int id);
 
-        void RemoveRestaurant(int id);
+        Task RemoveRestaurantAsync(int id);
     }
 }

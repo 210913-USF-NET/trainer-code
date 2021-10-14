@@ -14,15 +14,18 @@ namespace RRBL
 
         Task<Restaurant> AddRestaurantAsync(Restaurant resto);
 
-        Restaurant UpdateRestaurant(Restaurant restaurantToUpdate);
+        Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate);
 
         List<Restaurant> SearchRestaurant(string quertStr);
 
-        Review AddAReview(Review review);
+        Task<List<Review>> GetAllReviewsAsync();
+
+        Task<Review> AddAReviewAsync(Review review);
 
         Restaurant GetOneRestaurantById(int id);
 
-        void DeleteRestaurant(int id);
         Task<Review> GetOneReviewByIdAsync(int id);
+
+        Task DeleteRestaurantAsync(int id);
     }
 }

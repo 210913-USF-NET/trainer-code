@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RRBL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,10 +24,10 @@ namespace WebAPI.Controllers
 
         // GET: api/<ReviewController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Review>> Get()
         {
             //Team Carlos
-            return new string[] { "value1", "value2" };
+            return await _bl.GetAllReviewsAsync();
         }
 
         // GET api/<ReviewController>/5
@@ -46,9 +47,10 @@ namespace WebAPI.Controllers
 
         // POST api/<ReviewController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] Review review)
         {
-            //Team Garlic
+            Review addedReview = await _bl.AddAReviewAsync(review);
+            return Created("api/[controller]", addedReview);
         }
 
         // PUT api/<ReviewController>/5
