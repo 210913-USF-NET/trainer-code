@@ -21,7 +21,7 @@ Git is a distributed version control system that helps developers to collaborate
 - ```git log```: Displays commit history of the current working tree
 - ```git stash```: Need to stash away your current changes real quick before pulling/checking out different branch? Use this command
     - ```git stash pop```: Use this to retrieve the latest stashed change
-
+- ```git blame```: this shows you who wrote the code, line by line
 ## Troubleshooting
 - "Help, I didn't use -m flag when I was committing and I can't get out of vi/vim!"
     - Do not despair
