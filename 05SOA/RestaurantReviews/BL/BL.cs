@@ -26,10 +26,10 @@ namespace RRBL
             return await _repo.AddRestaurantAsync(resto);
         }
 
-        public Restaurant UpdateRestaurant(Restaurant restoToUpdate)
+        public async Task<Restaurant> UpdateRestaurantAsync(Restaurant restoToUpdate)
         {
             //add logic to update restaurant
-            return _repo.UpdateRestaurant(restoToUpdate);
+            return await _repo.UpdateRestaurantAsync(restoToUpdate);
         }
 
         public List<Restaurant> SearchRestaurant(string queryStr)
@@ -37,14 +37,15 @@ namespace RRBL
             return _repo.SearchRestaurant(queryStr);
         }
 
+
         public async Task<List<Review>> GetAllReviewsAsync()
         {
             return await _repo.GetAllReviewsAsync();
         }
 
-        public Review AddAReview(Review review)
+        public async Task<Review> AddAReviewAsync(Review review)
         {
-            return _repo.AddAReview(review);
+            return await _repo.AddAReviewAsync(review);
         }
 
         public Restaurant GetOneRestaurantById(int id)
@@ -52,9 +53,9 @@ namespace RRBL
             return _repo.GetOneRestaurantById(id);
         }
 
-        public void DeleteRestaurant(int id)
+        public async Task DeleteRestaurantAsync(int id)
         {
-            _repo.RemoveRestaurant(id);
+           await _repo.RemoveRestaurantAsync(id);
         }
     }
 }

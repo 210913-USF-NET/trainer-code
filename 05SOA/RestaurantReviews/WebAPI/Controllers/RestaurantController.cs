@@ -53,16 +53,19 @@ namespace WebAPI.Controllers
 
         // PUT api/<RestaurantController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put([FromBody] Restaurant newRestaurant)
         {
             //Shrek 5ever
+            Restaurant updatedRestaurant = await _bl.UpdateRestaurantAsync(newRestaurant);
+            return Created("api/[controller]", updatedRestaurant);
         }
 
         // DELETE api/<RestaurantController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             //!Fast Just Furious
+          await _bl.DeleteRestaurantAsync(id);
         }
     }
 }
