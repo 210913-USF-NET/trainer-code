@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DL</name>
+    </assembly>
+    <members>
+        <member name="M:DL.DBRepo.GetOneRestaurantById(System.Int32)">
+            <summary>
+            returns Model.Restaurant by restaurant Id
+            </summary>
+            <param name="id">restuarant Id</param>
+            <returns>Model.Restaurant</returns>
+        </member>
+        <member name="M:DL.DBRepo.RemoveRestaurant(System.Int32)">
+            <summary>
+            Deletes a restaurant. 
+            </summary>
+            <param name="id">id of the restaurant to be deleted</param>
+        </member>
+    </members>
+</doc>
