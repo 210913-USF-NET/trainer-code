@@ -55,24 +55,18 @@ namespace DL
             // }).ToList();
         }
 
-        public Restaurant UpdateRestaurant(Restaurant restaurantToUpdate)
+        public async Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate)
         {
-            Restaurant restoToUpdate = new Restaurant() {
+
+            _context.Restaurants.Update(restaurantToUpdate);
+            await _context.SaveChangesAsync();
+            _context.ChangeTracker.Clear();
+
+            return new Restaurant() {
                 Id = restaurantToUpdate.Id,
                 Name = restaurantToUpdate.Name,
                 City = restaurantToUpdate.City,
                 State = restaurantToUpdate.State
-            };
-
-            restoToUpdate = _context.Restaurants.Update(restoToUpdate).Entity;
-            _context.SaveChanges();
-            _context.ChangeTracker.Clear();
-
-            return new Restaurant() {
-                Id = restoToUpdate.Id,
-                Name = restoToUpdate.Name,
-                City = restoToUpdate.City,
-                State = restoToUpdate.State
             };
         }
 
