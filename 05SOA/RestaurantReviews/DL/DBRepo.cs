@@ -90,7 +90,22 @@ namespace DL
             ).ToList();
         }
 
-        public Review AddAReview(Review review)
+
+        public async Task<Review> AddAReviewAsync(Review review)
+        {
+            //this method adds the restoToAdd obj to change tracker
+            await _context.AddAsync(review);
+
+            //the "changes" don't get executed until you call the SaveChanges method
+            await _context.SaveChangesAsync();
+
+            //this clears the changetracker so it returns to a clean slate
+            _context.ChangeTracker.Clear();
+
+            return review;
+        }
+
+        public async Task<Review> AddAReview(Review review)
         {
             Review reviewToAdd = new Review(){
                 Rating = review.Rating,

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RRBL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +14,14 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
+        private IBL _bl;
+
+        public ReviewController(IBL bl)
+        {
+            _bl = bl;
+        }
+
+
         // GET: api/<ReviewController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -30,9 +40,10 @@ namespace WebAPI.Controllers
 
         // POST api/<ReviewController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] Review review)
         {
-            //Team Garlic
+            Review addedReview = await _bl.AddAReviewAsync(review);
+            return Created("api/[controller]", addedReview);
         }
 
         // PUT api/<ReviewController>/5
