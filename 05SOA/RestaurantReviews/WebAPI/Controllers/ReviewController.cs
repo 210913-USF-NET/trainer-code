@@ -32,10 +32,17 @@ namespace WebAPI.Controllers
 
         // GET api/<ReviewController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            //using System.Helpme!
-            return "value";
+            Review foundReview = await _bl.GetOneReviewByIdAsync(id);
+            if (foundReview != null)
+            {
+                return Ok(foundReview);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
         // POST api/<ReviewController>

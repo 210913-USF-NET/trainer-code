@@ -53,6 +53,11 @@ namespace RRBL
             return _repo.GetOneRestaurantById(id);
         }
 
+        public async Task<Review> GetOneReviewByIdAsync(int id)
+        {
+            return await _repo.GetOneReviewByIdAsync(id);
+        }
+
         public async Task DeleteRestaurantAsync(int id)
         {
            await _repo.RemoveRestaurantAsync(id);

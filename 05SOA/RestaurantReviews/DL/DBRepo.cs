@@ -151,6 +151,14 @@ namespace DL
                 .Include(r => r.Reviews)
                 .FirstOrDefault(r => r.Id == id);
         }
+
+        public async Task<Review> GetOneReviewByIdAsync(int id)
+        {
+            return _context.Reviews
+                .AsNoTracking()
+                .FirstOrDefault(r => r.Id == id);
+        }
+
         /// <summary>
         /// Deletes a restaurant. 
         /// </summary>
