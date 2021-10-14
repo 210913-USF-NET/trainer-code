@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models;
+using RRBL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,13 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
+        private IBL _bl;
+
+        public ReviewController(IBL bl)
+        {
+            _bl = bl;
+        }
+
         // GET: api/<ReviewController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -22,10 +31,17 @@ namespace WebAPI.Controllers
 
         // GET api/<ReviewController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            //using System.Helpme!
-            return "value";
+            Review foundReview = _bl.GetOneReviewById(id);
+            if (foundReview != null)
+            {
+                return Ok(foundReview);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
         // POST api/<ReviewController>

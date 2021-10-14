@@ -16,6 +16,8 @@ namespace DL
 
         Restaurant GetOneRestaurantById(int id);
 
+        Review GetOneReviewById(int id);
+
         void RemoveRestaurant(int id);
     }
 }

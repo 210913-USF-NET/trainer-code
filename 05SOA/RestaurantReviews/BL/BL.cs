@@ -47,6 +47,11 @@ namespace RRBL
             return _repo.GetOneRestaurantById(id);
         }
 
+        public Review GetOneReviewById(int id)
+        {
+            return _repo.GetOneReviewById(id);
+        }
+
         public void DeleteRestaurant(int id)
         {
             _repo.RemoveRestaurant(id);

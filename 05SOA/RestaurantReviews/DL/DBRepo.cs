@@ -123,6 +123,14 @@ namespace DL
                 .Include(r => r.Reviews)
                 .FirstOrDefault(r => r.Id == id);
         }
+
+        public Review GetOneReviewById(int id)
+        {
+            return _context.Reviews
+                .AsNoTracking()
+                .FirstOrDefault(r => r.Id == id);
+        }
+
         /// <summary>
         /// Deletes a restaurant. 
         /// </summary>
