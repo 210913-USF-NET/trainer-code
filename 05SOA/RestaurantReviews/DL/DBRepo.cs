@@ -140,16 +140,16 @@ namespace DL
         /// </summary>
         /// <param name="id">restuarant Id</param>
         /// <returns>Model.Restaurant</returns>
-        public Restaurant GetOneRestaurantById(int id)
+        public async Task<Restaurant> GetOneRestaurantByIdAsync(int id)
         {
-            return _context.Restaurants
+            return await _context.Restaurants
                 //this include method joins reviews table with the restaurant table
                 //and grabs all reviews that references the selected restaurant
                 //by restaurantId
                 // .Include("Reviews")
                 .AsNoTracking()
                 .Include(r => r.Reviews)
-                .FirstOrDefault(r => r.Id == id);
+                .FirstOrDefaultAsync(r => r.Id == id);
         }
         /// <summary>
         /// Deletes a restaurant. 
@@ -157,7 +157,7 @@ namespace DL
         /// <param name="id">id of the restaurant to be deleted</param>
         public async Task RemoveRestaurantAsync(int id)
         {
-            await _context.Restaurants.Remove(GetOneRestaurantByIdAsync(id));
+            _context.Restaurants.Remove(await GetOneRestaurantByIdAsync(id));
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
         }

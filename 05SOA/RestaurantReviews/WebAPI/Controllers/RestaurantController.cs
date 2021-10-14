@@ -30,9 +30,9 @@ namespace WebAPI.Controllers
 
         // GET api/<RestaurantController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            Restaurant foundRestaurant = _bl.GetOneRestaurantById(id);
+            Restaurant foundRestaurant = await _bl.GetOneRestaurantByIdAsync(id);
             if (foundRestaurant != null)
             {
                 return Ok(foundRestaurant);
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
         {
             //Shrek 5ever
             Restaurant updatedRestaurant = await _bl.UpdateRestaurantAsync(newRestaurant);
-            return Created("api/[controller]", updatedRestaurant);
+            return Ok(updatedRestaurant);
         }
 
         // DELETE api/<RestaurantController>/5

@@ -22,7 +22,7 @@ namespace RRBL
 
         Task<Review> AddAReviewAsync(Review review);
 
-        Restaurant GetOneRestaurantById(int id);
+        Task<Restaurant> GetOneRestaurantByIdAsync(int id);
 
         Task DeleteRestaurantAsync(int id);
     }

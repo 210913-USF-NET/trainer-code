@@ -23,21 +23,22 @@ namespace Models
         [Range(1,5)]
         public int Rating 
         {
-            get
-            {
-                return _rating;
-            }
-            set
-            {
-                if(value > 5 || value < 1)
-                {
-                    throw new InputInvalidException("Rating must be between 1 and 5");
-                }
-                else
-                {
-                    _rating = value;
-                }
-            }
+            get; set;
+            //get
+            //{
+            //    return _rating;
+            //}
+            //set
+            //{
+            //    if(value > 5 || value < 1)
+            //    {
+            //        throw new InputInvalidException("Rating must be between 1 and 5");
+            //    }
+            //    else
+            //    {
+            //        _rating = value;
+            //    }
+            //}
         }
 
         public string Note { get; set; }
