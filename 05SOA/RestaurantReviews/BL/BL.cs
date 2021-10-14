@@ -47,9 +47,9 @@ namespace RRBL
             return _repo.GetOneRestaurantById(id);
         }
 
-        public void DeleteRestaurant(int id)
+        public async Task DeleteRestaurantAsync(int id)
         {
-            _repo.RemoveRestaurant(id);
+           await _repo.RemoveRestaurantAsync(id);
         }
     }
 }
