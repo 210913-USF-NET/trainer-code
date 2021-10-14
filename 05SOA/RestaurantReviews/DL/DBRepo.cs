@@ -57,22 +57,16 @@ namespace DL
 
         public async Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate)
         {
-            Restaurant restoToUpdate = new Restaurant() {
-                Id = restaurantToUpdate.Id,
-                Name = restaurantToUpdate.Name,
-                City = restaurantToUpdate.City,
-                State = restaurantToUpdate.State
-            };
 
-            _context.Restaurants.Update(restoToUpdate);
+            _context.Restaurants.Update(restaurantToUpdate);
             await _context.SaveChangesAsync();
             _context.ChangeTracker.Clear();
 
             return new Restaurant() {
-                Id = restoToUpdate.Id,
-                Name = restoToUpdate.Name,
-                City = restoToUpdate.City,
-                State = restoToUpdate.State
+                Id = restaurantToUpdate.Id,
+                Name = restaurantToUpdate.Name,
+                City = restaurantToUpdate.City,
+                State = restaurantToUpdate.State
             };
         }
 

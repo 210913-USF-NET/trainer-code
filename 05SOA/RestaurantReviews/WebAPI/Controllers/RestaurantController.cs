@@ -53,7 +53,7 @@ namespace WebAPI.Controllers
 
         // PUT api/<RestaurantController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Restaurant newRestaurant)
+        public async Task<IActionResult> Put([FromBody] Restaurant newRestaurant)
         {
             //Shrek 5ever
             Restaurant updatedRestaurant = await _bl.UpdateRestaurantAsync(newRestaurant);
