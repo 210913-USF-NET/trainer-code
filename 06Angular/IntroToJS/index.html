@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to JS</title>
+</head>
+<body>
+    <h2>Functions</h2>
+    <button onclick="greet()">Named function</button>
+    <button onclick="greetMadly()">Function Expression</button>
+    <button onclick="(() => alert('hi'))()">IIFE</button>
+    <button onclick="anotherArrow()">Arrow Function</button>
+    <button onclick="callbackExample(innerfunction)">Callback Function</button>
+
+    <hr><br>
+    <h2>Encapsulation using closure</h2>
+    <button onclick="console.log(count())">Count!</button>
+    <button onclick="console.log(countTwo())">Count again!</button>
+    <button onclick="console.log(countThree())">Count yet once more</button>
+
+
+    <hr><br>
+
+    <h2>XMLHttpRequest</h2>
+    <form action="">
+        <input type="text" id="pokeQuery">
+        <input type="button" value="Find Me!" onclick="getPokemon()">
+    </form>
+    <div class="pokemon">
+        <img src="">
+    </div>
+    <script src="./index.js"></script>
+    <script src="./ajax.js"></script>
+    <script>
+        // Named function/ function declaration
+        function greet() {
+            console.log('hello!');
+        }
+
+        //anonymous function with function expression
+        let greetMadly = function() {
+            alert("HELLLLLO");
+        }
+
+        //arrow function
+        let anotherArrow = () => {
+            console.log("I'm an arrow function/ lambda expression")
+        }
+
+        let innerfunction = () => {
+            console.log("i'm inner function");
+        }
+        let callbackExample = function(callback)
+        {
+            console.log('outer function');
+            callback();
+        }
+    </script>
+</body>
+</html>

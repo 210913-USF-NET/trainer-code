@@ -11,6 +11,13 @@
             <param name="id">restuarant Id</param>
             <returns>Model.Restaurant</returns>
         </member>
+        <member name="M:DL.DBRepo.GetOneReviewByIdAsync(System.Int32)">
+            <summary>
+            Retrieve a review by review Id
+            </summary>
+            <param name="id">review Id</param>
+            <returns>Review object if there is a match, null if there is none</returns>
+        </member>
         <member name="M:DL.DBRepo.RemoveRestaurantAsync(System.Int32)">
             <summary>
             Deletes a restaurant. 

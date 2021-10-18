@@ -152,6 +152,11 @@ namespace DL
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
+        /// <summary>
+        /// Retrieve a review by review Id
+        /// </summary>
+        /// <param name="id">review Id</param>
+        /// <returns>Review object if there is a match, null if there is none</returns>
         public async Task<Review> GetOneReviewByIdAsync(int id)
         {
             return _context.Reviews
