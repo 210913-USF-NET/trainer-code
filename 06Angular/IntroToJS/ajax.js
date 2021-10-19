@@ -23,7 +23,6 @@ function getPokemon() {
             {
                 //and the response is successful
                 pokemon = JSON.parse(xhr.responseText);
-                console.log(pokemon);
 
                 //find the img tag and set the attribute as the img we got from the response
                 let imgTag = document.querySelector('.pokemon > img').setAttribute('src', pokemon.sprites.front_default);
@@ -45,4 +44,31 @@ function getPokemon() {
             }
         }
     }
+}
+
+let getDigimon = function() {
+    let digimonApiUrl = "https://digimon-api.vercel.app/api/digimon/name/";
+    let digimonQuery = document.getElementById("digimonQuery").value;
+
+    fetch(digimonApiUrl + digimonQuery).then((res) => res.json()).then(
+        (digimonArr) => {
+            let digimon = digimonArr[0];
+
+            let imgTag = document.querySelector('.digimon > img').setAttribute('src', digimon.img);
+
+            //find the containing div
+            let div = document.querySelector('.digimon');
+
+            //first, remove all pre-existing caption element
+            document.querySelectorAll('.digimon caption').forEach((el) => el.remove());
+            
+            //create new caption element
+            let captionEl = document.createElement('caption');
+            //create a text node with the name
+            let digiNode = document.createTextNode(digimon.name);
+            //append the node to the caption element
+            captionEl.appendChild(digiNode);
+            //now append the caption element to the div
+            div.appendChild(captionEl);
+    });
 }
