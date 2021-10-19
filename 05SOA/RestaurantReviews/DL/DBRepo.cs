@@ -29,6 +29,20 @@ namespace DL
             return resto;
         }
 
+        public Restaurant AddRestaurant(Restaurant resto)
+        {
+            //this method adds the restoToAdd obj to change tracker
+            _context.Add(resto);
+
+            //the "changes" don't get executed until you call the SaveChanges method
+            _context.SaveChanges();
+
+            //this clears the changetracker so it returns to a clean slate
+            _context.ChangeTracker.Clear();
+
+            return resto;
+        }
+
         public List<Restaurant> GetAllRestaurants()
         {
             //select * from Restaurants in sql query

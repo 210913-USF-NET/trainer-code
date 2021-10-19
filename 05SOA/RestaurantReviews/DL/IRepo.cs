@@ -7,6 +7,8 @@ namespace DL
     public interface IRepo
     {
         Task<Restaurant> AddRestaurantAsync(Restaurant resto);
+
+        Restaurant AddRestaurant(Restaurant resto);
         List<Restaurant> GetAllRestaurants();
         Task<Restaurant> UpdateRestaurantAsync(Restaurant restaurantToUpdate);
 
