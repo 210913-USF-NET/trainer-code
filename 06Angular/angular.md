@@ -21,3 +21,26 @@ This means that once the SPA loads, there is no refresh.
 ## Initialize angular application
 - ```npm install -g @angular/cli```
 - ```ng new <your-app-name>```
+
+## To Serve your app
+- ```ng serve```
+    - by default, it will open at localhost:4200
+- ```ng serve --open```
+    - This opens the browser for you
+
+## Modules
+Angular uses ES2015 module system to practice separation of concerns
+It works kind of like namespaces in C#
+Modules are decorated with @ngModule decorator to let the angular compiler know that it is angular module with addition metadata about it
+Before we can use any components, we need to have them belong somewhere, by registering them to a module, by including the component name in declaration section of ngModule decoration
+If you want to use components from a different module, we first need to import the module that has that particular component, in the imports section.
+We separate modules by features
+In order to generate modules, use ```ng g module <module-name>```
+
+## Components
+Components are the reusable pieces of view that is bundled with its own logic, styles, and tests.
+They are one of the core parts of angular application and mainly handles user interactions and view display.
+In order to generate components, we use ```ng g component <component-name>``` 
+By default, components contain 4 file - html, css, ts, spec.ts (for unit testing)
+However, only html and ts file is necessary to really render a component
+Even then, you can have html included in the @component decorator as template instead of having its own separate html file.
