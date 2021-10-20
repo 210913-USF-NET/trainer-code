@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RRApiService } from '../service/rrapi.service';
 
 @Component({
   selector: 'restaurant-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rrService: RRApiService) { }
 
+  //lifecycle hooks, there're others like onDestory to dispose resources when this components gets destroyed
   ngOnInit(): void {
+    this.rrService.getAllRestaurants().then(result => {
+      console.log(result);
+    })
   }
 
 }
