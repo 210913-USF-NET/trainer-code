@@ -31,7 +31,7 @@ This means that once the SPA loads, there is no refresh.
 ## Modules
 Angular uses ES2015 module system to practice separation of concerns
 It works kind of like namespaces in C#
-Modules are decorated with @ngModule decorator to let the angular compiler know that it is angular module with addition metadata about it
+Modules are decorated with @ngModule decorator to let the angular compiler know that it is angular module with additional metadata about it
 Before we can use any components, we need to have them belong somewhere, by registering them to a module, by including the component name in declaration section of ngModule decoration
 If you want to use components from a different module, we first need to import the module that has that particular component, in the imports section.
 We separate modules by features
@@ -54,10 +54,10 @@ They are handled by angular's dependency injection, and are decorated with @inje
 Create services with ```ng g service <service-name>```
 
 ## Dependency Injection
-After we import our modules and register our services, we can utilize angular dependency injection to let it handle the deps that our components and services need. Declare your deps in the constructor of your class (service/components, etc). Once you have it injected, use them by ```this.<dep-name>```
+After we import our modules and register our services, we can utilize angular dependency injection to let it handle the deps that our components and services need. Declare your deps in the constructor of your class (service/classes, etc). Once you have it injected, use them by ```this.<dep-name>```
 
 ## Lifecycle hooks
-Angular provides us with various lifecycle hooks to take actions depending on the lifecycle of the component. For example, we can tell it to execute a certain action when the component loads, by placing them in ngOnInit(). Also, if we have resources that we need to dispose of, we can do so, during ngOnDestory()
+Angular provides us with various lifecycle hooks to take actions depending on the lifecycle of the component. For example, we can tell it to execute a certain action when the component loads, by placing the logic in ngOnInit(). Also, if we have resources that we need to dispose of, we can do so during ngOnDestory()
 (there are more)
 
 ## Directives

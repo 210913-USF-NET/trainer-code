@@ -18,4 +18,9 @@ export class RRApiService {
     //they are similar to promises, but instead of promise resolving once it receives the data, observables keeps the line open
     return this.http.get<restaurant[]>(this.rootUrl).toPromise();
   }
+
+  getRestaurantById(id: number): Promise<restaurant>
+  {
+    return this.http.get<restaurant>(this.rootUrl + "/" + id).toPromise();
+  }
 }

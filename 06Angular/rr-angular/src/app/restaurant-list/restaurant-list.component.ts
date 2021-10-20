@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { restaurant } from '../models/restaurant';
 import { RRApiService } from '../service/rrapi.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'restaurant-list',
@@ -9,7 +10,7 @@ import { RRApiService } from '../service/rrapi.service';
 })
 export class RestaurantListComponent implements OnInit {
 
-  constructor(private rrService: RRApiService) { }
+  constructor(private rrService: RRApiService, private router: Router) { }
 
   restaurants: restaurant[] = [];
   //lifecycle hooks, there're others like onDestory to dispose resources when this components gets destroyed
@@ -17,6 +18,11 @@ export class RestaurantListComponent implements OnInit {
     this.rrService.getAllRestaurants().then(result => {
       this.restaurants = result;
     });
+  }
+
+  goToRestaurant(restaurantId: number)
+  {
+    this.router.navigate(['restaurants/'+ restaurantId]);
   }
 
 }
