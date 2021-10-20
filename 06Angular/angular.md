@@ -45,6 +45,9 @@ By default, components contain 4 file - html, css, ts, spec.ts (for unit testing
 However, only html and ts file is necessary to really render a component
 Even then, you can have html included in the @component decorator as template instead of having its own separate html file.
 
+## Decorators
+Decorators tell angular that it is of a certain type (such as @ngModule or @Component) Angular takes the metadata that's been passed inside the decorator, and then adds them to the object. (the module/class)
+
 ## Services
 Services are reusable pieces of logic that can be shared across components.
 They are handled by angular's dependency injection, and are decorated with @injectable decorator.
@@ -57,3 +60,10 @@ After we import our modules and register our services, we can utilize angular de
 Angular provides us with various lifecycle hooks to take actions depending on the lifecycle of the component. For example, we can tell it to execute a certain action when the component loads, by placing them in ngOnInit(). Also, if we have resources that we need to dispose of, we can do so, during ngOnDestory()
 (there are more)
 
+## Directives
+Angular Directives provide additional functionality to the html pages/view.
+Two types: Structural, and attribute directives
+structural directives change the structure of dom/html page
+    - so things like ngIf, ngFor, anything that adds or removes html elements are structural directives
+Attribute directives changes the look and feel of elements
+    - like ngStyle
