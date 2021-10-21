@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { restaurant } from '../models/restaurant';
 import { RRApiService } from '../service/rrapi.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'restaurant-list',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RestaurantListComponent implements OnInit {
 
-  constructor(private rrService: RRApiService, private router: Router) { }
+  constructor(private currRoute: ActivatedRoute, private rrService: RRApiService, private router: Router) { }
 
   restaurants: restaurant[] = [];
   //lifecycle hooks, there're others like onDestory to dispose resources when this components gets destroyed
@@ -22,7 +22,22 @@ export class RestaurantListComponent implements OnInit {
 
   goToRestaurant(restaurantId: number): void
   {
-    this.router.navigate(['restaurants/'+ restaurantId]);
+    //navigate by absolute path
+    this.router.navigateByUrl(`restaurants/${restaurantId}`);
+  }
+
+  createRestaurant(): void
+  {
+    //navigate with relative path
+    this.router.navigate(['create', 'new'], {relativeTo: this.currRoute})
+  }
+
+  editRestaurant(event: Event, restaurant: restaurant): void
+  {
+    //stop the event from bubbling up to tr and triggering its event
+    event.stopPropagation();
+
+    this.router.navigate(['restaurants', 'edit', restaurant.id])
   }
 
   deleteRestaurant(event: Event, restaurant: restaurant): void

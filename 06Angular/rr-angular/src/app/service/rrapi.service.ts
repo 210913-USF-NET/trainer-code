@@ -28,4 +28,14 @@ export class RRApiService {
   {
     return this.http.delete<void>(this.rootUrl + '/' + id).toPromise();
   }
+
+  addRestaurant(restaurant: restaurant): Promise<restaurant>
+  {
+    return this.http.post<restaurant>(this.rootUrl, restaurant).toPromise();
+  }
+
+  editRestaurant(restaurant: restaurant): Promise<restaurant>
+  {
+    return this.http.put<restaurant>(this.rootUrl + '/' + restaurant.id, restaurant).toPromise();
+  }
 }

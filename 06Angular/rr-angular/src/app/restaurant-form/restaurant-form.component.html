@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>
+        <ng-container [ngSwitch]="mode">
+            <span *ngSwitchCase="'create'">Create New Restaurant</span>
+            <span *ngSwitchCase="'edit'">Edit {{restaurant.name}}</span>
+            <span *ngSwitchDefault>Restaurant Form</span>
+        </ng-container>
+    </h1>
+
+    <form (ngSubmit)="onSubmit(restaurantForm)" #restaurantForm="ngForm">
+        <div class="form-group">
+            <label for="name">Restaurant Name</label>
+            <input class="form-control" type="text" name="name" id="restaurant-name" [(ngModel)]="restaurant.name" #name="ngModel" placeholder="Restaurant Name" required>
+            <div *ngIf="restaurantForm.controls['name'].invalid && restaurantForm.controls['name'].touched">
+                <span *ngIf="restaurantForm.controls['name'].errors?.required" class="help-inline">Name is required</span>  
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city">Restaurant City</label>
+            <input class="form-control" type="text" name="city" id="restaurant-city" [(ngModel)]="restaurant.city" #city="ngModel" placeholder="Restaurant City">
+        </div>
+        <div class="form-group">
+            <label for="state">Restaurant State</label>
+            <input class="form-control" [(ngModel)]="restaurant.state" #state="ngModel"  type="text" name="state" id="restaurant-state" placeholder="Restaurant State">
+        </div>
+        <!-- property binding with [] -->
+        <input class="btn btn-success" type="submit" [value]="mode === 'create' ? 'Create' : 'Save Changes'">
+    </form>
+</div>

@@ -1,11 +1,11 @@
 <div class="container">
-    <h1>Restaurants</h1>
+    <h1>Restaurants</h1><span (click)="createRestaurant()" class="tr-btn"><i class="fas fa-pencil-alt"></i> Create New</span> 
     <table class="table table-hover">
         <thead>
             <th>Name</th>
             <th>City</th>
             <th>State</th>
-            <th></th>
+            <th colspan="2"></th>
         </thead>
         <tbody>
             <!-- ngFor is a structural directive that loops through an array and takes actions -->
@@ -14,6 +14,7 @@
                 <td>{{restaurant.name}}</td>
                 <td>{{restaurant.city}}</td>
                 <td>{{restaurant.state}}</td>
+                <td class="tr-btn" (click)="editRestaurant($event, restaurant)"><i class="fas fa-edit"></i></td>
                 <td (click)="deleteRestaurant($event, restaurant)"><a class="tr-btn"><i class="fas fa-trash"></i></a></td>
             </tr>
         </tbody>
