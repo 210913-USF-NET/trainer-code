@@ -90,7 +90,7 @@ auth0 provides both authentication and authorization ability to our application 
 
 ## Promises vs Observables
 
-Both of them represent async operations that result in some form of return. Promises are closed after the result has been returned. Once it is fulfilled its done. Observables use publisher/subscriber model and whenever there are any changes, all subscribers are notified of them.
+Both of them represent async operations that result in some form of return. Promises are closed after the result has been returned. Once it is fulfilled it's done. Observables use publisher/subscriber model and whenever there are any changes, all subscribers are notified of them.
 
 ## Routes
 - create a router module and configure your routes via array that holds route objects. 
