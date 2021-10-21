@@ -12,7 +12,7 @@ export class AuthComponent implements OnInit {
 
   constructor(public auth: AuthService, @Inject(DOCUMENT) public document: Document) { }
 
-  rootUrl: string = 'restaurants';
+  rootUrl: string = 'http://localhost:4200';
 
   ngOnInit(): void {
     this.auth.isAuthenticated$.subscribe((isLoggedIn) => {
