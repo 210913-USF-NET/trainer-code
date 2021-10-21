@@ -20,9 +20,27 @@ export class RestaurantListComponent implements OnInit {
     });
   }
 
-  goToRestaurant(restaurantId: number)
+  goToRestaurant(restaurantId: number): void
   {
     this.router.navigate(['restaurants/'+ restaurantId]);
+  }
+
+  deleteRestaurant(event: Event, restaurant: restaurant): void
+  {
+    event.stopPropagation();
+    //string interpolation in js
+    let response = confirm(`do you really want to delete ${restaurant.name}?`).valueOf()
+
+    if(response)
+    {
+      this.rrService.deleteRestaurant(restaurant.id).then((res) => {
+        //success
+        alert(`${restaurant.name} has been deleted successfully`)
+        this.rrService.getAllRestaurants().then((allResto) => {
+          this.restaurants = allResto;
+        });
+      }, (res) => alert('something went wrong'));
+    }
   }
 
 }

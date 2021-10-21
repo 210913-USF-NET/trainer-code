@@ -1,0 +1,8 @@
+.tr-btn {
+    color: black;
+}
+
+.tr-btn:hover {
+    color: blue;
+    cursor: pointer;
+}

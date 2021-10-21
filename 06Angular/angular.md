@@ -67,3 +67,10 @@ structural directives change the structure of dom/html page
     - so things like ngIf, ngFor, anything that adds or removes html elements are structural directives
 Attribute directives changes the look and feel of elements
     - like ngStyle
+
+## JS Events
+- JS events occur in 3 phases
+    - Capture phase: the event travels from window object to the event target
+    - Event target: the event reaches the target element and the event listener responds
+    - Bubbling: the event travels back up from the target element to the window
+    - to prevent the event from bubbling further, we use event.stopPropagation() method

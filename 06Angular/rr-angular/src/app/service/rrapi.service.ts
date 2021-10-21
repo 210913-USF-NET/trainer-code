@@ -23,4 +23,9 @@ export class RRApiService {
   {
     return this.http.get<restaurant>(this.rootUrl + "/" + id).toPromise();
   }
+
+  deleteRestaurant(id: number): Promise<void>
+  {
+    return this.http.delete<void>(this.rootUrl + '/' + id).toPromise();
+  }
 }
