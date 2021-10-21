@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@auth0/auth0-angular';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
@@ -7,7 +8,8 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
 const routes: Routes = [
   {
     path: 'restaurants/:mode/:id',
-    component: RestaurantFormComponent
+    component: RestaurantFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'restaurants/:id',
@@ -17,11 +19,11 @@ const routes: Routes = [
     path: 'restaurants',
     component: RestaurantListComponent
   },
-  {
-    path: '',
-    redirectTo: 'restaurants',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: '',
+  //   redirectTo: 'restaurants',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

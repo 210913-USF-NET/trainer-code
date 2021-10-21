@@ -8,6 +8,9 @@ import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail
 import { AppRoutingModule } from './app-routing.module';
 import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 import { FormsModule } from '@angular/forms';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +18,18 @@ import { FormsModule } from '@angular/forms';
     RestaurantListComponent,
     NavBarComponent,
     RestaurantDetailComponent,
-    RestaurantFormComponent
+    RestaurantFormComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      domain: environment.authDomain,
+      clientId: environment.authClientId
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

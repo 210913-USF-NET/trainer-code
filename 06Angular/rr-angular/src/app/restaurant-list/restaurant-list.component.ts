@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { restaurant } from '../models/restaurant';
 import { RRApiService } from '../service/rrapi.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'restaurant-list',
@@ -10,14 +11,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RestaurantListComponent implements OnInit {
 
-  constructor(private currRoute: ActivatedRoute, private rrService: RRApiService, private router: Router) { }
+  constructor(private currRoute: ActivatedRoute, private rrService: RRApiService, private router: Router, private auth: AuthService) { }
 
   restaurants: restaurant[] = [];
+  isLoggedIn: boolean = false;
   //lifecycle hooks, there're others like onDestory to dispose resources when this components gets destroyed
   ngOnInit(): void {
     this.rrService.getAllRestaurants().then(result => {
       this.restaurants = result;
     });
+    this.auth.isAuthenticated$.subscribe((isAuthenticated) =>{
+      this.isLoggedIn = isAuthenticated;
+    })
   }
 
   goToRestaurant(restaurantId: number): void

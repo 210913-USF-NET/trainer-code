@@ -14,8 +14,10 @@
                 <td>{{restaurant.name}}</td>
                 <td>{{restaurant.city}}</td>
                 <td>{{restaurant.state}}</td>
-                <td class="tr-btn" (click)="editRestaurant($event, restaurant)"><i class="fas fa-edit"></i></td>
-                <td (click)="deleteRestaurant($event, restaurant)"><a class="tr-btn"><i class="fas fa-trash"></i></a></td>
+                <ng-container *ngIf="isLoggedIn">
+                    <td class="tr-btn" (click)="editRestaurant($event, restaurant)"><i class="fas fa-edit"></i></td>
+                    <td (click)="deleteRestaurant($event, restaurant)"><a class="tr-btn"><i class="fas fa-trash"></i></a></td>
+                </ng-container>
             </tr>
         </tbody>
     </table>
