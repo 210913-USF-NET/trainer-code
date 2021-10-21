@@ -74,3 +74,43 @@ Attribute directives changes the look and feel of elements
     - Event target: the event reaches the target element and the event listener responds
     - Bubbling: the event travels back up from the target element to the window
     - to prevent the event from bubbling further, we use event.stopPropagation() method
+
+## Authentication vs Authorization
+Authentication is verifying somebody's identity (who are you?)
+    We achieve authentication usually via log in
+Authorization is verifying if they can access this particular resource and/or take a certain action. (Are you allowed to do this?)
+
+auth0 provides both authentication and authorization ability to our application (which means, we can create roles in auth0 to assign to users)
+
+## Data binding
+- {{}}: Interpolation
+- []: Property Binding, from ts to view
+- (): Event binding, from view to ts
+- ```[()]```: Two-way binding
+
+## Promises vs Observables
+
+Both of them represent async operations that result in some form of return. Promises are closed after the result has been returned. Once it is fulfilled its done. Observables use publisher/subscriber model and whenever there are any changes, all subscribers are notified of them.
+
+## Routes
+- create a router module and configure your routes via array that holds route objects. 
+- pattern matches
+- you can use params via syntax like this /path/to/:param
+- query params are not declared in routes array but instead passed when navigating to it
+- subscribe to the current route and gain access to its params and query params by using ActivatedRoute
+- ```<router-outlet>``` tag acts as a placeholder for the views you want to present depending on your routes.
+- different ways to navigate routes: RouterLink (as attributes in your html elements) and using router service, ```router.navigate(['path','names'], routeExtra here like queryParams)```
+- you can also directly access the path/component via url ```<a href="path/to/component">Link</a>```
+
+## Other Topics of Interest
+- How to pass data between components
+    - @Input (From parent to child)
+    - @Output: EventEmitter (from child to parent)
+    - @ViewChild: When you need access to child's HTML element itself
+    - Query Params/params
+    - utilizing service
+- Pipes
+    - We use pipes to transform data from one format to another, usually to the ones that can be displayed on the view 
+    - We used async pipe to unwrap data from observables, but there are many other pipes
+    - date, json, currency, etc..
+    - you can create your own as well!
