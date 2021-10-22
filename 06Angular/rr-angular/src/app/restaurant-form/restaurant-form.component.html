@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="name">Restaurant Name</label>
             <input class="form-control" type="text" name="name" id="restaurant-name" [(ngModel)]="restaurant.name" #name="ngModel" placeholder="Restaurant Name" required>
-            <div *ngIf="restaurantForm.controls['name'].invalid && restaurantForm.controls['name'].touched">
+            <div *ngIf="restaurantForm.controls['name']?.invalid && restaurantForm.controls['name'].touched">
                 <span *ngIf="restaurantForm.controls['name'].errors?.required" class="help-inline">Name is required</span>  
             </div>
         </div>
