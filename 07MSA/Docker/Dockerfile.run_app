@@ -1,0 +1,5 @@
+ 
+  FROM mcr.microsoft.com/dotnet/aspnet:5.0
+  COPY bin/release/net5.0/out/ App/
+  WORKDIR /App
+  ENTRYPOINT ["dotnet", "StoreUI.dll"]
