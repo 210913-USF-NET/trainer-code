@@ -41,3 +41,14 @@
 *run the compose.yml file in the current working directory*
 - `$Docker-compose down`  
 *stop all containers in the currently running docker-compose environment*
+
+##Publishing images
+- Docker Hub  
+https://docs.docker.com/docker-hub/repos/  
+
+Dockerhub image repositories can be created through your dockerhub account, then pushed to from your local CLI
+
+- `$Docker build . -t <docker-hub-username>/<repo-name>:<tag>`  
+*build your image with association to the correct user and repo, taging different versions*
+- `$Docker push <docker-hub-username>/<repo-name>:<tag>`  
+*push the specified image to the remote repository*
