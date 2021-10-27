@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: hellllllo
+spec:
+    template:
+        metadata:
+            name: hellllllo-pod
+        spec:
+            containers:
+            - name: hello
+              image: hawkinsr/hello:latest
+            restartPolicy: Never
