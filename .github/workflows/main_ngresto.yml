@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  WORKING_DIRECTORY: 06Angular/rr-angular
+  WORKING_DIRECTORY: ./06Angular/rr-angular
 
 jobs:
   build:
@@ -30,17 +30,18 @@ jobs:
 #           pwd
 
       - name: npm install, build, and test
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
           pwd
-          npm install ${{env.WORKING_DIRECTORY}}
-          npm run build ${{env.WORKING_DIRECTORY}} --if-present
-          npm run test ${{env.WORKING_DIRECTORY}} --if-present
+          npm install 
+          npm run build  --if-present
+#         npm run test  --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ${{env.WORKING_DIRECTORY}}
 
   deploy:
     runs-on: ubuntu-latest
