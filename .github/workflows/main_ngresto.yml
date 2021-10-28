@@ -27,6 +27,7 @@ jobs:
       - name: cd working directory
         run: |
           cd ${{env.WORKING_DIRECTORY}}
+          pwd
 
       - name: npm install, build, and test
         run: |
