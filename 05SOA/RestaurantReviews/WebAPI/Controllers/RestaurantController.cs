@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
         public async Task Delete(int id)
         {
             //!Fast Just Furious
-          await _bl.DeleteRestaurantAsync(id);
+            await _bl.DeleteRestaurantAsync(id);
         }
     }
 }
