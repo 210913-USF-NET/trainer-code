@@ -37,10 +37,15 @@ jobs:
           npm run build  --if-present
 #         npm run test  --if-present
 
+      - name: Zip plz kthxbai
+        working-directory: ${{env.WORKING_DIRECTORY}}
+        run: |
+          zip -r app.zip ./dist
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: node-app
+          name: app
           path: ${{env.WORKING_DIRECTORY}}
 
   deploy:
