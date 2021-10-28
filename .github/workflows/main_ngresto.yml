@@ -24,16 +24,17 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: cd working directory
-        run: |
-          cd ${{env.WORKING_DIRECTORY}}
-          pwd
+#       - name: cd working directory
+#         run: |
+#           cd ${{env.WORKING_DIRECTORY}}
+#           pwd
 
       - name: npm install, build, and test
         run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+          pwd
+          npm install ${{env.WORKING_DIRECTORY}}
+          npm run build ${{env.WORKING_DIRECTORY}} --if-present
+          npm run test ${{env.WORKING_DIRECTORY}} --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
