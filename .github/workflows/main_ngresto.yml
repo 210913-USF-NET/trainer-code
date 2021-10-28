@@ -41,6 +41,8 @@ jobs:
         working-directory: ${{env.WORKING_DIRECTORY}}
         run: |
           zip -r app.zip ./dist
+          pwd
+          cd ./dist && ls
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
