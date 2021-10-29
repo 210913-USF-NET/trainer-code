@@ -42,13 +42,13 @@ jobs:
         run: |
           zip -r app.zip ./dist
           pwd
-          cd ./dist && ls
+          cd ./dist/rr-angular && ls
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: app
-          path: ${{env.WORKING_DIRECTORY}}
+          path: ${{env.WORKING_DIRECTORY}}/dist/rr-angular
 
   deploy:
     runs-on: ubuntu-latest
