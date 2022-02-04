@@ -37,11 +37,18 @@ jobs:
           npm run build  --if-present
 #         npm run test  --if-present
 
+      - name: Zip plz kthxbai
+        working-directory: ${{env.WORKING_DIRECTORY}}
+        run: |
+          zip -r app.zip ./dist
+          pwd
+          cd ./dist/rr-angular && ls
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: node-app
-          path: ${{env.WORKING_DIRECTORY}}
+          name: app
+          path: ${{env.WORKING_DIRECTORY}}/dist/rr-angular
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,7 +61,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: node-app
+          name: app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
