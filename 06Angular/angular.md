@@ -89,7 +89,6 @@ auth0 provides both authentication and authorization ability to our application 
 - ```[()]```: Two-way binding
 
 ## Promises vs Observables
-
 Both of them represent async operations that result in some form of return. Promises are closed after the result has been returned. Once it is fulfilled it's done. Observables use publisher/subscriber model and whenever there are any changes, all subscribers are notified of them.
 
 ## Routes

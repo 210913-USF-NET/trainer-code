@@ -2,6 +2,4 @@
 
 // import { restaurant } from './index.js';
 
-// let newResto: restaurant = {
-
-// }
+let newResto;
